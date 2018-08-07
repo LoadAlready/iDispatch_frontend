@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  border-color: burlywood; 
+  border-style: solid;
+  border-width: 2px;
+  margin: 15px;
 }
 
 .App-logo {
@@ -25,4 +29,78 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+
+
+.job-container{
+  border-color: black; 
+  border-style: solid;
+  border-width: 2px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar {
+  border-color: red; 
+  border-style: solid;
+  border-width: 2px;
+  margin: 5px;
+  display: flex;
+}
+
+.previous-jobs {
+  border-color: blue; 
+  border-style: solid;
+  border-width: 2px;
+  margin: 5px;
+}
+
+.schedule {
+  border-color: orange; 
+  border-style: solid;
+  border-width: 2px;
+  margin: 5px;  
+}
+
+.map {
+  border-color: green; 
+  border-style: solid;
+  border-width: 2px;
+  margin: 5px; 
+}
+
+.job-details {
+  border-color: yellowgreen; 
+  border-style: solid;
+  border-width: 2px;
+  text-align: left;
+  margin: 5px;
+  min-width: 33vw;
+  
+}
+
+.selected-job {
+  border-color: gold; 
+  border-style: solid;
+  border-width: 2px;
+  margin: 5px; 
+  min-width: 33vw;
+}
+
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.padding-bottom{
+  padding-bottom: 5px;
 }
