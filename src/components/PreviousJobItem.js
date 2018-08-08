@@ -2,8 +2,8 @@ import React from 'react'
 
 export default (props) => {
   return (
-    <div>
-      {props.job.clientName}
-    </div>
+    <li>
+      {props.job.clientName} <br />{new Date(parseFloat(props.job.appointment)).toLocaleString()}
+    </li>
   )
 }

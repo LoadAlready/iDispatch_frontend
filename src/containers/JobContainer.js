@@ -13,16 +13,11 @@ import TableExamplePagination from '../components/JobList'
 export default class JobContainer extends Component {
   render() {
     return (
-      <fragment>
       <div className="job-container">
           <PreviousJobsList />
           <SelectedJob />
           <Schedule />
       </div>
-      <div>
-        <TableExamplePagination />
-      </div>
-      </fragment>
     )
   }
 }

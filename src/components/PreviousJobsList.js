@@ -8,8 +8,13 @@ import PreviousJobItem from './PreviousJobItem'
 
 export default class PreviousJobsList extends Component {
 
-  mapLastFivePreviousJobs = () => { 
-    return jobs.map( (job) => {
+  mapLastFivePreviousJobs = () => {
+    let previousAppointments = jobs.filter( job => job.appointment < Date.now()).sort(function (a, b) {
+          return a.appointment - b.appointment
+      })
+    
+    return previousAppointments.slice(0, 5).map( (job) => {
+      let date = new Date(parseFloat(job.appointment))
       return (<PreviousJobItem key={uuid()}job={job}/>)
     })
   }
@@ -17,8 +22,10 @@ export default class PreviousJobsList extends Component {
   render() {
     return (
       <div className="previous-jobs">
-          Previous Jobs Content
-        {this.mapLastFivePreviousJobs()}
+        <h3>Previous Jobs Content</h3>
+          <ul>
+            {this.mapLastFivePreviousJobs()}
+          </ul>
       </div>
     )
   }

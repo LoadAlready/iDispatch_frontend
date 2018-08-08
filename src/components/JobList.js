@@ -4,7 +4,7 @@ import JobListItem from './JobListItem'
 import Jobs from '../data'
 import jobs from '../data';
 
-const TransactionsList = () => {
+const JobList = () => {
   return (
     <table className="ui celled striped padded table">
       <tbody>
@@ -41,4 +41,4 @@ const TransactionsList = () => {
   )
 }
 
-export default TransactionsList
+export default JobList
