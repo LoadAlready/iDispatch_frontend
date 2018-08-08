@@ -2,24 +2,24 @@ import React from 'react'
 
 export default () => {
   return (
-    <div class="ui secondary  menu">
-      <a class="item">
+    <div className="ui secondary  menu">
+      <a className="item">
         Home
       </a>
-      <a class="item">
+      <a className="item">
         Create new ticket
       </a>
-      <a class="item">
+      <a className="item">
         Profile
       </a>
-      <div class="right menu">
-        <div class="item">
-          <div class="ui icon input">
+      <div className="right menu">
+        <div className="item">
+          <div className="ui icon input">
             <input type="text" placeholder="Search..."></input>
-            <i class="search link icon"></i>
+            <i className="search link icon"></i>
           </div>
         </div>
-        <a class="ui item active">
+        <a className="ui item active">
           Logout
         </a>
       </div>
