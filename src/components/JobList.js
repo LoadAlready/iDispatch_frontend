@@ -1,7 +1,8 @@
 import React from 'react'
 
 import JobListItem from './JobListItem'
-import Jobs from '../data'
+
+//dummy data
 import jobs from '../data';
 
 const JobList = () => {

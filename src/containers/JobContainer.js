@@ -1,23 +1,27 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 
-import SelectedJob from '../containers/SelectedJob'
+import { Route, Switch, Redirect } from 'react-router-dom' 
+import Home from '../components/Home'
+import ProfileContainer from './ProfileContainer'
+import Ticket from '../components/Ticket'
 
-import PreviousJobsList from '../components/PreviousJobsList'
-import Schedule from '../components/Schedule'
-import Map from '../components/Map'
 
 //testing
-import TableExamplePagination from '../components/JobList'
+import JobList from '../components/JobList'
 
-export default class JobContainer extends Component {
+class JobContainer extends Component {
   render() {
     return (
-      <div className="job-container">
-          <PreviousJobsList />
-          <SelectedJob />
-          <Schedule />
-      </div>
+      <fragment>
+        <Switch>
+          <Route exact path='/profile' component={ProfileContainer} />
+          <Route exact path='/ticket' component={Ticket} />
+          <Route exact path='/' component={Home} />
+        </Switch>
+      </fragment>
     )
   }
 }
+
+export default JobContainer

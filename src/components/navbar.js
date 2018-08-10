@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { Link, Redirect, withRouter } from 'react-router-dom'
 
-export default () => {
+class Navbar extends Component {
+  render (){
   return (
     <div className="ui secondary  menu">
-      <a className="item">
+      <Link to="/" className="item">
         Home
-      </a>
-      <a className="item">
+      </Link>
+      <Link to="/ticket" className="item">
         Create new ticket
-      </a>
-      <a className="item">
+      </Link>
+      <Link to="/profile" className="item">
         Profile
-      </a>
+      </Link>
       <div className="right menu">
         <div className="item">
           <div className="ui icon input">
@@ -26,3 +28,6 @@ export default () => {
     </div>
   )
 }
+}
+export default withRouter(Navbar)
+
