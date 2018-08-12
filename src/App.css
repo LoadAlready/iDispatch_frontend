@@ -35,6 +35,11 @@
   text-align: center;
 }
 
+.loginscreen {
+  padding: 25px;
+  margin: 25px;
+}
+
 .job-container{
   border-color: black; 
   border-style: solid;
