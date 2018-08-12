@@ -10,6 +10,9 @@ import Login from './components/Login'
 import Navbar from './components/navbar'
 import JobContainer from './containers/JobContainer'
 
+// For testing
+import Register from './components/Register'
+
 const mapStateToProps = (state) => ({
   logged_in: state.logged_in,
 })
