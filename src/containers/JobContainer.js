@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 
-import { Route, Switch, Redirect } from 'react-router-dom' 
+import { Route, Switch } from 'react-router-dom' 
 import Home from '../components/Home'
 import ProfileContainer from './ProfileContainer'
 import Ticket from '../components/Ticket'
+import Register from '../components/Register'
 
 
 //testing

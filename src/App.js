@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-
+import { withRouter, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import './App.css';
-
-import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
 
 import Login from './components/Login'
 import Navbar from './components/navbar'
@@ -14,14 +12,17 @@ import JobContainer from './containers/JobContainer'
 import Register from './components/Register'
 
 const mapStateToProps = (state) => ({
-  logged_in: state.logged_in,
+  loggedIn: state.loggedIn,
+  username: state.username,
+  token: state.token,
 })
 
 class App extends Component {
   
   renderLogin = () => {
+    console.log('renderlogin')
     //remove bang for production, bang here to bypass login
-    if(!this.props.logged_in) {
+    if(this.props.loggedIn) {
       return (
         <fragment>
           <Navbar />
@@ -31,8 +32,10 @@ class App extends Component {
       )} else {
         return (
           <fragment>
-            <h1 className="loginscreen">iDispatch</h1>
-            <Login />
+            <Switch>
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/' component={Login} />
+            </Switch>
           </fragment>
         )}
   }

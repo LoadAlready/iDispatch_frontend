@@ -1,3 +1,5 @@
-const toggleLogin = {
-    type: 'TOGGLELOGIN'
+export let toggleLoginAction = () => {
+   return {
+       type: 'TOGGLELOGIN'
+   }
 }

@@ -1,14 +1,14 @@
 
 const initialState = {
-    logged_in: false,
+    loggedIn: false,
+    username: null,
+    token: null,
 }
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case 'TOGGLELOGIN':
-            return { ...state, logged_in: !state.logged_in }
-        case 'DECREMENT':
-            return { ...state, count: state.count - 1 }
+        case "TOGGLELOGIN":
+            return { ...state, loggedIn: true }
         default:
             return state
     }
