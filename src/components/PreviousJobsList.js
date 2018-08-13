@@ -1,23 +1,31 @@
 import React, { Component } from 'react'
 import uuid from 'uuid'
 
-//FOR DUMMY DATA
-import jobs from '../data'
 
 import PreviousJobItem from './PreviousJobItem'
 
 export default class PreviousJobsList extends Component {
 
   mapLastFivePreviousJobs = () => {
-    let previousAppointments = jobs.filter( job => job.appointment < Date.now()).sort(function (a, b) {
-          return a.appointment - b.appointment
-      })
+    let previousAppointments = this.props.jobs.filter((job) => {
+      let timeArray = job.schedule_time.split(':');
+      var newTime = new Date(String(job.schedule_date_year), 
+                             String(job.schedule_date_month), 
+                             String(job.schedule_date_day), 
+                             timeArray[0], 
+                             timeArray[1]);
+                  
+      return Date.parse(newTime) < Date.now()
+    })
     
     return previousAppointments.slice(0, 5).map( (job) => {
-      let date = new Date(parseFloat(job.appointment))
       return (<PreviousJobItem key={uuid()}job={job}/>)
     })
   }
+
+
+
+
 
   render() {
     return (
@@ -30,3 +38,4 @@ export default class PreviousJobsList extends Component {
     )
   }
 }
+

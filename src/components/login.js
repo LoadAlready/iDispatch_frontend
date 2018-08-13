@@ -2,19 +2,21 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
-import { toggleLoginAction } from '../actions'
+import { toggleLoginAction, setUser } from '../actions'
 
 const AUTH_URL = 'http://localhost:3000/auth';
 const GET_TOKEN_URL = 'http://localhost:3000/user_token/';
+const GET_CURRENT_USER_URL = 'http://localhost:3000/users/current'
 
 const mapStateToProps = (state) => ({
   loggedIn: state.loggedIn,
+  userInfo: state.userInfo,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  loginToggle: () => dispatch( toggleLoginAction() )
+  loginToggle: () => dispatch( toggleLoginAction() ),
+  userSet: (user) => dispatch( setUser() )
 })
-
 
 
 class Login extends Component {
@@ -22,7 +24,6 @@ class Login extends Component {
     super(props)
     this.state = {
       email: null,
-      username: null,
       password: null,
     }
   }
@@ -50,6 +51,7 @@ class Login extends Component {
   };
 
   testTokenAndSignIn = (token) => {
+    console.log('token', token)
     const getConfig = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -64,9 +66,18 @@ class Login extends Component {
   handleLoggingIn = (statusCode) => {
     if (statusCode === 200){
       this.props.loginToggle();
-      console.log(this.props)
     }
   };
+//need to set token in local storage
+  getUserInfo = () => {
+    let postConfig = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzQ3NzYxNDQsInN1YiI6MX0.qAbES5M3tjDw1oGXPd_Rtf-4WVxuTgHuMWjiBq_7n28'
+      }
+    }
+    return fetch(GET_CURRENT_USER_URL, postConfig).then( r => r.json()).then( data => this.props.userSet(data))
+  }
 
   handleLoginFormClick = () => {
     this.getToken();

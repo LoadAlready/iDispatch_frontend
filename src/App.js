@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
-
 import './App.css';
 
 import Login from './components/Login'
@@ -14,13 +13,11 @@ import Register from './components/Register'
 const mapStateToProps = (state) => ({
   loggedIn: state.loggedIn,
   username: state.username,
-  token: state.token,
 })
 
 class App extends Component {
   
   renderLogin = () => {
-    console.log('renderlogin')
     //remove bang for production, bang here to bypass login
     if(this.props.loggedIn) {
       return (

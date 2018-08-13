@@ -3,3 +3,10 @@ export let toggleLoginAction = () => {
        type: 'TOGGLELOGIN'
    }
 }
+
+export let setUser = (user) => {
+    return {
+        type: 'SETUSER',
+        payload: {userInfo: user}
+    }
+}

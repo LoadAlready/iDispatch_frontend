@@ -1,6 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default () => {
+const mapStateToProps = (state) => ({
+    userInfo: state.userInfo,
+})
+
+const EmployeeStats = (props) => {
   return (
     <div>
       <table className="ui celled striped padded table">
@@ -23,7 +28,7 @@ export default () => {
             </th>
             </tr>
             <tr>
-                <td>PROPS</td>
+                <td>{props.userInfo.userInfo.jobs.length}</td>
                 <td>PROP</td>
                 <td>props</td>
             </tr>
@@ -32,3 +37,5 @@ export default () => {
     </div>
   )
 }
+
+export default connect(mapStateToProps)(EmployeeStats)
