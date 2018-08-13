@@ -4,15 +4,15 @@ export default (props) => {
 
   let timeArray = props.job.schedule_time.split(':');
 
-  var newTime = new Date(String(props.job.schedule_date_year),
+  var date = new Date(String(props.job.schedule_date_year),
     String(props.job.schedule_date_month),
     String(props.job.schedule_date_day),
     timeArray[0],
     timeArray[1]);
-
+  var newDate = date.toUTCString().split(' ').slice(0,5).join(' ');
   return (
     <li>
-      {props.job.job_number} <br /> {String(newTime)}
+      <strong>Job Number:</strong> {props.job.job_number} <br /> {newDate}
     </li>
   )
 }

@@ -13,8 +13,7 @@ export default class PreviousJobsList extends Component {
                              String(job.schedule_date_month), 
                              String(job.schedule_date_day), 
                              timeArray[0], 
-                             timeArray[1]);
-                  
+                             timeArray[1]);   
       return Date.parse(newTime) < Date.now()
     })
     
@@ -23,14 +22,10 @@ export default class PreviousJobsList extends Component {
     })
   }
 
-
-
-
-
   render() {
     return (
       <div className="previous-jobs">
-        <h3>Previous Jobs Content</h3>
+        <h3>Recent Jobs</h3>
           <ul>
             {this.mapLastFivePreviousJobs()}
           </ul>
