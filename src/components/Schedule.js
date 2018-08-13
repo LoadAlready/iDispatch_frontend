@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
 import UUID from 'uuid'
 
-import jobs from '../data'
-
 export default class Schedule extends Component {
 
     mapNextFiveJobs = () => {
-        //filter jobs that are scheduled after the current time then sort the array based on next scheduled
-        let futureAppointments = jobs.filter( job => job.appointment >= Date.now()).sort(function (a, b) {
-            return a.appointment - b.appointment
+        let newDate = null;
+        let futureAppointments = this.props.jobs.filter((job) => {
+            let timeArray = job.schedule_time.split(':');
+            var newTime = new Date(String(job.schedule_date_year),
+                String(job.schedule_date_month),
+                String(job.schedule_date_day),
+                timeArray[0],
+                timeArray[1]);
+            newDate = newTime.toUTCString().split(' ').slice(0, 5).join(' ');
+            return Date.parse(newTime) > Date.now()
         })
-        //Converts milliseconds to date, creates LI
-        return futureAppointments.slice(0,5).map( (job) => {
-            let date = new Date(parseFloat(job.appointment))
-            return (
-                <li key={UUID()} className="padding-bottom">{job.clientName} <br /> {date.toLocaleString()}</li>
-            )
+
+
+        return futureAppointments.slice(0, 5).map((job) => {
+            return <li key={UUID()} className="padding-bottom"><strong>Job Number:</strong> {job.job_number} <br /> {newDate}</li>
         })
     }
 

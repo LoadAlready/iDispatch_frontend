@@ -29,7 +29,7 @@ class Home extends Component {
         <div className="job-container">
           <PreviousJobsList jobs={this.props.userInfo.userInfo.jobs}/>
           <SelectedJob />
-          <Schedule />
+          <Schedule jobs={this.props.userInfo.userInfo.jobs}/>
         </div>
       )
     } else {
