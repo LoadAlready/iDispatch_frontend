@@ -12,7 +12,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 class PreviousJobsList extends Component {
   handleItemClick = (props) => {
-    console.log('prev list ', props.job)
     this.props.selectJob(props.job)
   }
 

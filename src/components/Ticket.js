@@ -19,6 +19,7 @@ const Ticket = () => (
       <Form.TextArea label='Job Description' placeholder='Description' width={8} />
       <Form.TextArea label='Other Nothes' placeholder='Other Nothes' width={8} />
     </Form.Group>
+    <Form.Button type="submit" >Submit</Form.Button>
   </Form>
 )
 

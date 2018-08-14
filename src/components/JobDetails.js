@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class JobDetails extends Component {
 
+const mapStateToProps = (state) => ({
+  currentlySelectedJob: state.currentlySelectedJob,
+})
+
+class JobDetails extends Component {
   constructor(props){
     super(props)
 
@@ -9,11 +14,19 @@ export default class JobDetails extends Component {
       fetchedJobInfo: null,
     }
   }
+  componentDidUpdate(prevProps, prevState){
+    if(this.props.currentlySelectedJob !== prevProps.currentlySelectedJob){
+      
+      this.fetchJobInfo()
+      
+    } 
+  }
 
-  JOBURL = `http://localhost:3000/jobs/` + this.props.job.id;
 
   fetchJobInfo = () => {
-    fetch(this.JOBURL).then(r => r.json()).then(data => this.setState({ fetchedJobInfo: data}))
+    let JOBURL = `http://localhost:3000/jobs/` + this.props.currentlySelectedJob.id;
+
+    fetch(JOBURL).then(r => r.json()).then(data => this.setState({ fetchedJobInfo: data}))
   }
 
   mapMaterialItems = () => {
@@ -22,10 +35,6 @@ export default class JobDetails extends Component {
       return <li><strong>Material PO:</strong> {material.id} <strong>- Description:</strong> {material.description} </li>
     })
   }
-
-  // handleItemClick = (event) => {
-  //   debugger
-  // }
 
   mapJobCrewItems = () => {
     let counter = 0
@@ -39,12 +48,13 @@ export default class JobDetails extends Component {
 
   render() {
     if(this.state.fetchedJobInfo !== null){
-      console.log("ad", this.state.fetchedJobInfo)
+      console.log("job details", this.state.fetchedJobInfo)
       return (
         <div className="job-details">
           <h2 className="text-center">Job Details</h2>
           <ul>
-            <li><strong>Client Name:</strong> <span className="right-align">{this.state.fetchedJobInfo.client.name}</span></li>
+            <li><strong>Job ID:</strong> {this.state.fetchedJobInfo.id}</li>
+            <li><strong>Client Name:</strong> {this.state.fetchedJobInfo.client.name}</li>
             <li><strong>Client Address:</strong> {this.state.fetchedJobInfo.client.street_address}, {this.state.fetchedJobInfo.client.city}. {this.state.fetchedJobInfo.client.state}</li>
             {this.mapJobCrewItems()}
             <li><strong>Job Description:</strong> {this.state.fetchedJobInfo.description}</li>
@@ -58,9 +68,11 @@ export default class JobDetails extends Component {
         </div>
       )
     } else {
-        this.fetchJobInfo()
+      this.fetchJobInfo()
         return (
         <h1>Loading</h1>
     )}
   }
 }
+
+export default connect(mapStateToProps)(JobDetails)
