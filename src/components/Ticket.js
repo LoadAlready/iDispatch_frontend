@@ -5,7 +5,7 @@ const Ticket = () => (
   <Form>
     <Form.Group>
       <Form.Input label='Client Name' placeholder='Client Name' width={4} />
-      <Form.Input label='Requested By' placeholder='Requested By' width={3} />
+      <Form.Input label='Requested By' placeholder='Requested By' width={4} />
       <Form.Input label='Job Number' placeholder='Job Number' width={2} />
       <Form.Input label='Schedule Date' placeholder='Schedule Date' width={2} />
       <Form.Input label='Technician Name' placeholder='Technician Name' width={4} />

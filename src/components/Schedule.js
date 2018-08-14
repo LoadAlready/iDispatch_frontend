@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import UUID from 'uuid'
-import { debug } from 'util';
 
 export default class Schedule extends Component {
 
     mapNextFiveJobs = () => {
+        //filter jobs based on current date/time, only show upcoming
         let futureAppointments = this.props.jobs.filter((job) => {
             let timeArray = job.schedule_time.split(':');
             var newTime = new Date(String(job.schedule_date_year),
@@ -14,6 +14,7 @@ export default class Schedule extends Component {
                 timeArray[1]);
             return Date.parse(newTime) > Date.now()
         })
+        //sort jobs based on most recent first
         let sortedFutureAppointments = futureAppointments.sort((a, b) => {
             let aTimeArray = a.schedule_time.split(':');
             let bTimeArray = b.schedule_time.split(':');
@@ -30,10 +31,10 @@ export default class Schedule extends Component {
                 bTimeArray[1]);    
             return aDate - bDate
         });
-
-        return sortedFutureAppointments.slice(0, 5).map((job) => {
+        // return our list items with only the 5 most recent upcoming jobs
+        return sortedFutureAppointments.slice(0, 20).map((job) => {
             let shortenedDate = new Date(job.schedule_date_year, job.schedule_date_month, job.schedule_date_day);
-            return <li key={UUID()} className="padding-bottom"><strong>Job Number:</strong> {job.job_number} <br />{shortenedDate.toDateString()}</li>
+            return <li key={UUID()} className="padding-bottom"><strong>Job Number:</strong> {job.job_number} <br />{shortenedDate.toDateString()} <br /> <strong>Time:{job.schedule_time}</strong></li>
         })
     }
 

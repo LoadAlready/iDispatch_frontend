@@ -11,8 +11,9 @@ export default (props) => {
     timeArray[1]);
   var newDate = date.toUTCString().split(' ').slice(0,5).join(' ');
   return (
-    <li>
+    <li jobid={props.job.id} onClick={props.handleItemClick.bind(null, props)}>
       <strong>Job Number:</strong> {props.job.job_number} <br /> {newDate}
+      <br />
     </li>
   )
 }

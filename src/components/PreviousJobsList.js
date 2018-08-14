@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import uuid from 'uuid'
 
-
+import { setCurrentlySelectedJob } from '../actions'
 import PreviousJobItem from './PreviousJobItem'
 
-export default class PreviousJobsList extends Component {
+const mapDispatchToProps = (dispatch) => ({
+  selectJob: (job) => dispatch(setCurrentlySelectedJob(job))
+})
+
+class PreviousJobsList extends Component {
+  handleItemClick = (props) => {
+    console.log('prev list ', props.job)
+    this.props.selectJob(props.job)
+  }
 
   mapLastFivePreviousJobs = () => {
     let previousAppointments = this.props.jobs.filter((job) => {
@@ -33,8 +43,8 @@ export default class PreviousJobsList extends Component {
       return  bDate - aDate
     });
 
-    return sortedpreviousAppointments.slice(0, 5).map( (job) => {
-      return (<PreviousJobItem key={uuid()}job={job}/>)
+    return sortedpreviousAppointments.slice(0, 20).map( (job) => {
+      return (<PreviousJobItem handleItemClick={this.handleItemClick} key={uuid()}job={job}/>)
     })
   }
 
@@ -50,3 +60,4 @@ export default class PreviousJobsList extends Component {
   }
 }
 
+export default connect(null, mapDispatchToProps)(PreviousJobsList)

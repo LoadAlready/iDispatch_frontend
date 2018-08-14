@@ -10,3 +10,10 @@ export let setUser = (user) => {
         payload: {userInfo: user}
     }
 }
+
+export let setCurrentlySelectedJob = (job) => {
+    return {
+        type: 'SETCURRENTJOB',
+        payload: {currentlySelectedJob: job}
+    }
+}
