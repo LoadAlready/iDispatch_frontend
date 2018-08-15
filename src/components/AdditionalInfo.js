@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 })
 
 class AdditionalInfo extends Component {
-  
+
   renderAddionalInfo = () => {
     if (this.props.currentDetail !== null){
       switch (this.props.currentDetail.currentDetail.detailType) {
@@ -45,25 +45,27 @@ class AdditionalInfo extends Component {
         break;
 
         case "material":
-//need to set returned json to a variable then use that variable to populate material po details
+          let supplierInfo = null;
+
           let fetchSupplierInfo = () => {
             let URL = `http://localhost:3000/suppliers/` + this.props.currentDetail.currentDetail.supplier_id;
-            fetch(URL).then(r => r.json()).then( supplier => {debugger})
+            
+            let setSupplier = (suplier) => {
+              debugger
+            }
+            fetch(URL).then(r => r.json()).then( supplier => setSupplier(supplier))
           }
-
+          {fetchSupplierInfo()}
           return (
             <fragment>
               <h1>Material PO Details</h1>
               <ul>
                 <li><strong>Material ID: </strong>{this.props.currentDetail.currentDetail.id}</li>
-                <li><strong>Supplier ID: </strong>cmon</li>
+                <li><strong>Supplier ID: </strong>{supplierInfo.id}</li>
               </ul>
             </fragment>
           )
       }
-
-
-
     } return <h1 className="text-center">Additional Info Content</h1>
   }
   
