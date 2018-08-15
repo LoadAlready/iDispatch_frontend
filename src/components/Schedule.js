@@ -45,8 +45,14 @@ class Schedule extends Component {
         });
         // return our list items with only the 5 most recent upcoming jobs
         return sortedFutureAppointments.slice(0, 20).map((job) => {
+            let counter = 1000;
             let shortenedDate = new Date(job.schedule_date_year, job.schedule_date_month, job.schedule_date_day);
-            return <li key={UUID()} jobid={job.id} onClick={this.handleItemClick.bind(null, job)} className="padding-bottom"><strong jobid={job.id}>Job Number:</strong> {job.id}<strong jobid={job.id}>Job Number:</strong> {job.job_number} <br />{shortenedDate.toDateString()} <br /> <strong jobid={job.id}>Time:{job.schedule_time}</strong></li>
+            return <li  key={UUID()} 
+                        jobid={job.id} 
+                        onClick={this.handleItemClick.bind(null, job)} 
+                        className="padding-bottom" id={counter ++}
+                    ><strong jobid={job.id}>Database id:</strong> {job.id}<br /><strong jobid={job.id}>Job Number:</strong> {job.job_number} <br />{shortenedDate.toDateString()} <br /> <strong jobid={job.id}>Time:{job.schedule_time}</strong>
+                    </li>
         })
     }
 

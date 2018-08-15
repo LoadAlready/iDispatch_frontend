@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { setCurrentlySelectedJob } from '../actions'
 
 import JobDetails from '../components/JobDetails'
-import Map from '../components/Map'
+import AdditionalInfo from '../components/AdditionalInfo'
 
 
 const mapStateToProps = (state) => ({
@@ -21,11 +21,11 @@ class SelectedJob extends Component {
       return (
         <div className="selected-job">
           <JobDetails job={this.props.currentlySelectedJob}/>
-          <Map />
+          <AdditionalInfo />
         </div>
       )
-    } else return (
-            <h1>loading</h1>
+    } return (
+        <h1>loading</h1>
       )
   }
 }

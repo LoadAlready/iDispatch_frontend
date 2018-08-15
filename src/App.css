@@ -54,7 +54,7 @@
 }
 
 .previous-jobs {
-  height: 50rem;
+  height: 25rem;
   width: 33rem;
 	overflow: scroll;
   border-color: blue; 
@@ -72,6 +72,16 @@
   border-width: 2px;
   margin: 5px;  
 }
+
+.additional-info {
+  border-color: navy; 
+  border-style: solid;
+  border-width: 2px;
+  margin: 5px;
+  height: 25rem;
+  overflow: scroll;
+}
+
 .ticket {
   border-color: blueviolet; 
   border-style: solid;
@@ -84,6 +94,7 @@
   border-style: solid;
   border-width: 2px;
   margin: 5px; 
+  height: 25rem;
 }
 
 .job-details {
@@ -92,8 +103,13 @@
   border-width: 2px;
   text-align: left;
   margin: 5px;
+  overflow: scroll;
+  height: 25rem;
   min-width: 33vw;
-  
+}
+
+.job-detail-buttons {
+  size: small;
 }
 
 .selected-job {
@@ -127,3 +143,13 @@
   border-width: 2px;
   margin: 5px; 
 }
+
+
+
+/* .menu {
+  background-color: lightblue;
+}
+
+.ui.secondary.menu.test{
+  background-color: lightblue;
+} */

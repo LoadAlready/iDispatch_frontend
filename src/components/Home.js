@@ -6,6 +6,7 @@ import { setCurrentlySelectedJob } from '../actions'
 import SelectedJob from '../containers/SelectedJob'
 import PreviousJobsList from '../components/PreviousJobsList'
 import Schedule from '../components/Schedule'
+import Map from '../components/Map'
 
 const mapStateToProps = (state) => ({
   userInfo: state.userInfo,
@@ -17,13 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 class Home extends Component {
-  constructor(){
-    super()
 
-    this.state = {
-      sortedJobsArray: [],
-    }
-  }
 
   mapAndSortUpcomingJobs = () => {
     //filter jobs based on current date/time, only show upcoming
@@ -68,7 +63,10 @@ class Home extends Component {
       {this.setInitialCurrentJob()}
       return (
         <div className="job-container">
+        <div>
           <PreviousJobsList jobs={this.props.userInfo.userInfo.jobs}/>
+          <Map />
+          </div>
           <SelectedJob />
           <Schedule jobs={this.props.userInfo.userInfo.jobs}/>
         </div>

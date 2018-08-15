@@ -8,28 +8,23 @@ import Home from '../components/Home'
 import ProfileContainer from './ProfileContainer'
 import Ticket from '../components/Ticket'
 
-//testing
-import JobList from '../components/JobList'
-import Register from '../components/Register'
 //remove this after token set in local storage
 const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzQ3NzYxNDQsInN1YiI6MX0.qAbES5M3tjDw1oGXPd_Rtf-4WVxuTgHuMWjiBq_7n28';
 
 const GET_CURRENT_USER_URL = 'http://localhost:3000/users/current';
 
-
-
 const mapStateToProps = (state) => ({
   loggedIn: state.loggedIn,
   userInfo: state.userInfo,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   userSet: (user) => dispatch(setUser(user))
-})
+});
 
 class JobContainer extends Component {
   componentDidMount(){
-    this.getUserInfo()
+    this.getUserInfo();
   }
 
   getUserInfo = () => {
@@ -39,7 +34,7 @@ class JobContainer extends Component {
         'Authorization': token
       }
     }
-    return fetch(GET_CURRENT_USER_URL, postConfig).then(r => r.json()).then(data => this.props.userSet(data))
+    return fetch(GET_CURRENT_USER_URL, postConfig).then(r => r.json()).then(data => this.props.userSet(data));
   }
 
   render() {
@@ -55,4 +50,4 @@ class JobContainer extends Component {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(JobContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(JobContainer));

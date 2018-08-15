@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 class PreviousJobsList extends Component {
   handleItemClick = (props) => {
-    this.props.selectJob(props.job)
+    this.props.selectJob(props.job);
   }
 
   mapLastFivePreviousJobs = () => {
@@ -23,7 +23,7 @@ class PreviousJobsList extends Component {
                              String(job.schedule_date_day), 
                              timeArray[0], 
                              timeArray[1]);   
-      return Date.parse(newTime) < Date.now()
+      return Date.parse(newTime) < Date.now();
     })
     let sortedpreviousAppointments = previousAppointments.sort((a, b) => {
       let aTimeArray = a.schedule_time.split(':');
@@ -39,11 +39,10 @@ class PreviousJobsList extends Component {
                             String(a.schedule_date_day),
                             aTimeArray[0],
                             aTimeArray[1]);
-      return  bDate - aDate
+      return  bDate - aDate;
     });
-
     return sortedpreviousAppointments.slice(0, 20).map( (job) => {
-      return (<PreviousJobItem handleItemClick={this.handleItemClick} key={uuid()}job={job}/>)
+      return  <PreviousJobItem handleItemClick={this.handleItemClick} key={uuid()} job={job} />;
     })
   }
 
