@@ -3,8 +3,15 @@ import { connect } from 'react-redux'
 
 import UUID from 'uuid'
 
+import { setCurrentDetail } from '../actions'
+
 const mapStateToProps = (state) => ({
   currentlySelectedJob: state.currentlySelectedJob,
+  currentDetail: state.currentDetail,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  selectDetail: (detail) => dispatch(setCurrentDetail(detail))
 })
 
 class JobDetails extends Component {
@@ -13,9 +20,9 @@ class JobDetails extends Component {
 
     this.state = {
       fetchedJobInfo: null,
-
     }
   }
+  
   componentDidUpdate(prevProps, prevState){
     if(this.props.currentlySelectedJob !== prevProps.currentlySelectedJob){
       this.fetchJobInfo()
@@ -49,19 +56,27 @@ class JobDetails extends Component {
     document.getElementById("1000").click()
   }
 
-  handleDetailClick = (event) => {
-    console.log(event.target)
+  handleDetailClick = (event, detailObject, detailType) => {
+    detailObject.detailType = detailType;
+    this.props.selectDetail(detailObject);
   }
 
 
   render() {
+    console.log("job deeeets", this.props)
     if(this.state.fetchedJobInfo !== null){
       return (
         <div className="job-details">
           <h2 className="text-center">Job Details</h2>
           <ul>
             <li key={UUID()}><strong>Job ID:</strong> {this.state.fetchedJobInfo.id}</li>
-            <li key={UUID()}><strong>Client Name:</strong> {this.state.fetchedJobInfo.client.name} <span className="job-detail-buttons"></span></li>
+            <li key={UUID()}><strong>Client Name:</strong> {this.state.fetchedJobInfo.client.name} 
+              <span className="job-detail-buttons">
+                <button 
+                  onClick={(event) => this.handleDetailClick(event, this.state.fetchedJobInfo.client, "client")}>
+               </button>
+              </span>
+            </li>
             <li key={UUID()}><strong>Client Address:</strong> {this.state.fetchedJobInfo.client.street_address}, {this.state.fetchedJobInfo.client.city}. {this.state.fetchedJobInfo.client.state}</li>
             {this.mapJobCrewItems()}
             <li key={UUID()}><strong>Job Description:</strong> {this.state.fetchedJobInfo.description}</li>
@@ -83,4 +98,4 @@ class JobDetails extends Component {
   }
 }
 
-export default connect(mapStateToProps)(JobDetails)
+export default connect(mapStateToProps, mapDispatchToProps)(JobDetails)

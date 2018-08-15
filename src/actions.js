@@ -17,3 +17,10 @@ export let setCurrentlySelectedJob = (job) => {
         payload: {currentlySelectedJob: job}
     }
 }
+
+export let setCurrentDetail = (detail) => {
+    return {
+        type: 'SETCURRENTDETAIL',
+        payload: { currentDetail: detail }
+    }
+}

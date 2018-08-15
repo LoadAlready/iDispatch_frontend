@@ -3,6 +3,7 @@ const initialState = {
     loggedIn: false,
     userInfo: null,
     currentlySelectedJob: null,
+    currentDetail: null,
     token: null,
 }
 
@@ -14,6 +15,8 @@ export default function reducer(state = initialState, action) {
             return { ...state, userInfo: action.payload }
         case "SETCURRENTJOB":
             return { ...state, currentlySelectedJob: action.payload.currentlySelectedJob }
+        case "SETCURRENTDETAIL":
+            return { ...state, currentDetail: action.payload}
         default:
             return state
     }
