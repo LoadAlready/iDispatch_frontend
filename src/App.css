@@ -73,13 +73,24 @@
   margin: 5px;  
 }
 
-.additional-info {
+/* .additional-info {
   border-color: navy; 
   border-style: solid;
   border-width: 2px;
   margin: 5px;
   height: 25rem;
   overflow: scroll;
+} */
+
+.additional-info {
+  border-color: navy; 
+  border-style: solid;
+  border-width: 2px;
+  text-align: left;
+  margin: 5px;
+  overflow: scroll;
+  height: 25rem;
+  min-width: 33vw;
 }
 
 .ticket {

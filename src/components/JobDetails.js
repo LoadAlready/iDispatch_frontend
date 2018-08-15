@@ -38,17 +38,29 @@ class JobDetails extends Component {
 
   mapMaterialItems = () => {
     let materialArray = [...this.state.fetchedJobInfo.material_pos];
-    return materialArray.map(function (material) {
-      return <li key={UUID()}><strong>Material PO:</strong> {material.id} <strong>- Description:</strong> {material.description} </li>
+    return materialArray.map( (material) => {
+      return <li key={UUID()}><strong>Material PO:</strong> {material.id} <strong>- Description:</strong> {material.description}
+                <span className="job-detail-buttons">
+                  <button
+                    onClick={(event) => this.handleDetailClick(event, material, "material")}>
+                  </button>
+                </span>
+            </li>
     })
   }
 
   mapJobCrewItems = () => {
     let counter = 0
     let crewArray = [...this.state.fetchedJobInfo.users]
-    return crewArray.map(function (crew) {
+    return crewArray.map((crew) => {
       counter ++; 
-      return <li key={UUID()}><strong>Technician {counter}:</strong> {crew.firstname} {crew.lastname}</li>
+      return <li key={UUID()}><strong>Technician {counter}:</strong> {crew.firstname} {crew.lastname}              
+                <span className="job-detail-buttons">
+                  <button
+                    onClick={(event) => this.handleDetailClick(event, crew, "tech")}>
+                  </button>
+                </span>
+              </li>
     })
   }
 
@@ -63,7 +75,6 @@ class JobDetails extends Component {
 
 
   render() {
-    console.log("job deeeets", this.props)
     if(this.state.fetchedJobInfo !== null){
       return (
         <div className="job-details">
@@ -85,7 +96,7 @@ class JobDetails extends Component {
             {this.mapMaterialItems()}
           </ul>
           <div className="center-content">
-            <button onClick={ (event) => this.handleCurrentJobClick(event) }>go to current job</button>
+            <button onClick={ (event) => this.handleCurrentJobClick(event) }>CURRENT JOB</button>
           </div>
           
         </div>
