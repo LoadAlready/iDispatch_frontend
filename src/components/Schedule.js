@@ -1,9 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import UUID from 'uuid'
 
-export default class Schedule extends Component {
+import { setCurrentlySelectedJob } from '../actions'
 
-    mapNextFiveJobs = () => {
+
+const mapDispatchToProps = (dispatch) => ({
+    selectJob: (job) => dispatch(setCurrentlySelectedJob(job))
+})
+
+class Schedule extends Component {
+    handleItemClick = (job) => {
+        this.props.selectJob(job)
+    }
+
+    mapUpcomingJobs = () => {
         //filter jobs based on current date/time, only show upcoming
         let futureAppointments = this.props.jobs.filter((job) => {
             let timeArray = job.schedule_time.split(':');
@@ -34,7 +46,7 @@ export default class Schedule extends Component {
         // return our list items with only the 5 most recent upcoming jobs
         return sortedFutureAppointments.slice(0, 20).map((job) => {
             let shortenedDate = new Date(job.schedule_date_year, job.schedule_date_month, job.schedule_date_day);
-            return <li key={UUID()} className="padding-bottom"><strong>Job Number:</strong> {job.job_number} <br />{shortenedDate.toDateString()} <br /> <strong>Time:{job.schedule_time}</strong></li>
+            return <li key={UUID()} jobid={job.id} onClick={this.handleItemClick.bind(null, job)} className="padding-bottom"><strong jobid={job.id}>Job Number:</strong> {job.id}<strong jobid={job.id}>Job Number:</strong> {job.job_number} <br />{shortenedDate.toDateString()} <br /> <strong jobid={job.id}>Time:{job.schedule_time}</strong></li>
         })
     }
 
@@ -43,9 +55,11 @@ export default class Schedule extends Component {
     <div className="upcoming-jobs">
         <h3>Upcoming Jobs</h3>
             <ul>
-                {this.mapNextFiveJobs()}
+                {this.mapUpcomingJobs()}
             </ul>
     </div>
     )
   }
 }
+
+export default connect(null, mapDispatchToProps)(Schedule)
