@@ -26,7 +26,12 @@ class Ticket extends Component {
   }
   
   handleSubmit = (event) => {
-    debugger
+    event.preventDefault()
+    let URL = 'http://localhost3000/jobs/';
+    let postConfig = {
+      method: 'post',
+    }
+    fetch(URL, postConfig)
   }
 
   handleInputChange(event) {
