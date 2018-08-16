@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
+import Search from './Search'
+
 class Navbar extends Component {
   render (){
   return (
@@ -16,10 +18,7 @@ class Navbar extends Component {
         </Link>
         <div className="right menu">
           <div className="item">
-            <div className="ui icon input">
-              <input type="text" placeholder="Search..."></input>
-              <i className="search link icon"></i>
-            </div>
+            <Search />
           </div>
           <a className="ui item active">
             Logout
