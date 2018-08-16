@@ -25,10 +25,14 @@ class Search extends Component {
       searchQuery: event.target.value
     })
   }
-
   onSubmit = () => {
     let jobObj = this.props.userInfo.userInfo.jobs.find((job) => { return job.job_number === parseInt(this.state.searchQuery) })
     this.props.selectJob(jobObj)
+  }
+  handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.onSubmit()
+    }
   }
 
   render() {
@@ -38,6 +42,7 @@ class Search extends Component {
           type="text" 
           placeholder="Search Job Number..."
           onChange={(event) => this.onChange(event)}
+          onKeyPress={ (event) => this.handleKeyPress(event)}
           value={this.state.searchQuery}
         ></input>
         <i 
