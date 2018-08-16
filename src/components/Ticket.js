@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { toggleRefetchUserInfo } from '../actions'
+
 import { Form } from 'semantic-ui-react'
 
+const mapDispatchToProps = (dispatch) => ({
+  toggleRefetchUserInfo: () => dispatch(toggleRefetchUserInfo())
+})
 
 class Ticket extends Component {
   constructor(props){
@@ -18,7 +24,8 @@ class Ticket extends Component {
       timeIn: "",
       timeOut: "",
       secondaryTechs: "",
-      materialPos: "",
+      materialPosID: "",
+      materialPosDescription: "",
       suppliers: "",
       jobDescription: "",
       jobNotes: "",
@@ -50,12 +57,14 @@ class Ticket extends Component {
           description: this.state.jobDescription,
           leadTechID: this.state.leadTechID,
           secondaryTechs: this.state.secondaryTechs,
-          materialPos: this.state.materialPos,
+          materialPosID: this.state.materialPosID,
+          materialPosDescription: this.state.materialPosDescription,
           suppliers: this.state.suppliers
         }
       })
     }
-    fetch(URL, postConfig).then(console.log)
+    fetch(URL, postConfig)
+    this.props.toggleRefetchUserInfo()
   }
 
   handleInputChange(event) {
@@ -69,6 +78,7 @@ class Ticket extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <Form onSubmit={(event) => this.handleSubmit(event)}>
         <Form.Group>
@@ -164,11 +174,19 @@ class Ticket extends Component {
           />
           <Form.Input
             onChange={this.handleInputChange} 
-            name="materialPos"
+            name="materialPosID"
             label='Material POs' 
             placeholder='Material POs' 
-            width={4}
-            value={this.state.materialPos} 
+            width={1}
+            value={this.state.materialPosID} 
+          />
+          <Form.Input
+            onChange={this.handleInputChange}
+            name="materialPosDescription"
+            label='Material Description'
+            placeholder='Material Description'
+            width={3}
+            value={this.state.materialPosDescription}
           />
           <Form.Input
             onChange={this.handleInputChange} 
@@ -203,4 +221,4 @@ class Ticket extends Component {
   }
 }
 
-export default Ticket
+export default connect(null, mapDispatchToProps)(Ticket)

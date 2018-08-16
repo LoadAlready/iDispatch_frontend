@@ -24,3 +24,9 @@ export let setCurrentDetail = (detail) => {
         payload: { currentDetail: detail }
     }
 }
+
+export let toggleRefetchUserInfo = () => {
+    return {
+        type: 'TOGGLEREFRESHUSER'
+    }
+}

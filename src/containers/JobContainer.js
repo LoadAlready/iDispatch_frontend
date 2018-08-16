@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom' 
 import { connect } from 'react-redux'
-import { setUser } from '../actions'
+import { setUser, toggleRefetchUserInfo } from '../actions'
 
 
 import Home from '../components/Home'
@@ -16,16 +16,25 @@ const GET_CURRENT_USER_URL = 'http://localhost:3000/users/current';
 const mapStateToProps = (state) => ({
   loggedIn: state.loggedIn,
   userInfo: state.userInfo,
+  refreshUserInfo: state.refreshUserInfo,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  userSet: (user) => dispatch(setUser(user))
+  userSet: (user) => dispatch(setUser(user)),
+  toggleRefetchUserInfo: () => dispatch(toggleRefetchUserInfo())
 });
 
 class JobContainer extends Component {
   componentDidMount(){
     this.getUserInfo();
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.refreshUserInfo === true) {
+      this.props.toggleRefetchUserInfo()
+      this.getUserInfo() 
+    }
+  }
+
 
   getUserInfo = () => {
     let postConfig = {
@@ -38,6 +47,7 @@ class JobContainer extends Component {
   }
 
   render() {
+    console.log('job container', this.props)
     return (
       <fragment>
         <Switch>
