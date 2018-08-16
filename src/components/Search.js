@@ -27,8 +27,15 @@ class Search extends Component {
     })
   }
   onSubmit = () => {
-    let jobObj = this.props.userInfo.userInfo.jobs.find((job) => { return job.job_number === parseInt(this.state.searchQuery) })
-    this.props.selectJob(jobObj)
+    // commented out code was search before dropdown. was working fine
+    // let jobObj = this.props.userInfo.userInfo.jobs.find((job) => { return job.job_number === parseInt(this.state.searchQuery) })
+    // this.props.selectJob(jobObj)
+    
+    if (this.props.searchCategory.searchCategory === 'jobNumber'){
+      let jobObj = this.props.userInfo.userInfo.jobs.find((job) => { return job.job_number === parseInt(this.state.searchQuery) })
+      this.props.selectJob(jobObj)
+    }
+
   }
   handleKeyPress = (event) => {
     if (event.key === 'Enter') {
