@@ -59,12 +59,14 @@ class Schedule extends Component {
 
   render() {
     return (
-    <div className="upcoming-jobs">
-        <h3>Upcoming Jobs</h3>
-            <ul>
-                {this.mapUpcomingJobs()}
-            </ul>
-    </div>
+        <div className="column-containers">
+          <h3>Upcoming Jobs</h3>
+            <div className="upcoming-jobs">
+                <ul>
+                    {this.mapUpcomingJobs()}
+                </ul>
+            </div>
+        </div>
     )
   }
 }

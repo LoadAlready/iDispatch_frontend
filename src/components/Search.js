@@ -6,6 +6,7 @@ import { setCurrentlySelectedJob } from '../actions'
 
 const mapStateToProps = (state) => ({
   userInfo: state.userInfo,
+  searchCategory: state.searchCategory,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -40,7 +41,7 @@ class Search extends Component {
       <div className="ui icon input">
         <input 
           type="text" 
-          placeholder="Search Job Number..."
+          placeholder="Search..."
           onChange={(event) => this.onChange(event)}
           onKeyPress={ (event) => this.handleKeyPress(event)}
           value={this.state.searchQuery}

@@ -45,6 +45,7 @@
 }
 
 .job-container{
+  height: 60rem;
   border-color: black; 
   border-style: solid;
   border-width: 2px;
@@ -72,15 +73,6 @@
   border-width: 2px;
   margin: 5px;  
 }
-
-/* .additional-info {
-  border-color: navy; 
-  border-style: solid;
-  border-width: 2px;
-  margin: 5px;
-  height: 25rem;
-  overflow: scroll;
-} */
 
 .additional-info {
   border-color: navy; 
@@ -153,6 +145,23 @@
   border-style: solid;
   border-width: 2px;
   margin: 5px; 
+}
+.job-list {
+  border-color: salmon; 
+  border-style: solid;
+  border-width: 2px;
+  margin: 5px;
+  height: 40rem;
+  overflow: scroll;
+}
+
+.column-containers {
+  padding-top: 15px;
+  background-color: rgba(0, 243, 231, 0);
+}
+
+.menu-dropdown {
+  padding-top: 4px;
 }
 
 

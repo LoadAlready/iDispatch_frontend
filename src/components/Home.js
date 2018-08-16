@@ -63,9 +63,9 @@ class Home extends Component {
       {this.setInitialCurrentJob()}
       return (
         <div className="job-container">
-        <div>
-          <PreviousJobsList jobs={this.props.userInfo.userInfo.jobs}/>
-          <Map />
+          <div className="column-containers">
+            <PreviousJobsList jobs={this.props.userInfo.userInfo.jobs}/>
+            <Map />
           </div>
           <SelectedJob />
           <Schedule jobs={this.props.userInfo.userInfo.jobs}/>

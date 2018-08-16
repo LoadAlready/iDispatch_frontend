@@ -10,13 +10,19 @@ const mapStateToProps = (state) => ({
 })
 
 const Profile = (props) => {
-  return (
-    <div className="profile">
-      <h2>{props.userInfo.userInfo.firstname} {props.userInfo.userInfo.lastname}</h2>
+  if(props.userInfo !== null){
+    return (
+      <div className="profile">
+        <h2>{props.userInfo.userInfo.firstname} {props.userInfo.userInfo.lastname}</h2>
         <EmployeeStats />
-      <h4>Previous Jobs</h4>
-      <JobList jobs={props.userInfo.userInfo.jobs}/>
-    </div>
+        <h4>Previous Jobs</h4>
+        <div className='job-list'> 
+          <JobList jobs={props.userInfo.userInfo.jobs} />
+        </div>
+      </div>
+    )
+  } return (
+    <h1>Loading</h1>
   )
 }
 

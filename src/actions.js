@@ -30,3 +30,10 @@ export let toggleRefetchUserInfo = () => {
         type: 'TOGGLEREFRESHUSER'
     }
 }
+
+export let setSearchCategory = (category) => {
+    return {
+        type: 'SETSEARCHCATEGORY', 
+        payload: { searchCategory: category }
+    }
+}

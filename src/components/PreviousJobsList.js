@@ -48,11 +48,13 @@ class PreviousJobsList extends Component {
 
   render() {
     return (
-      <div className="previous-jobs">
+      <div>
         <h3>Recent Jobs</h3>
-          <ul>
-            {this.mapLastFivePreviousJobs()}
-          </ul>
+        <div className="previous-jobs">
+            <ul>
+              {this.mapLastFivePreviousJobs()}
+            </ul>
+        </div>
       </div>
     )
   }
