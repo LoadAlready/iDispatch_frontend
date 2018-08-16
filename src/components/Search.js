@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-const mapStateToProps = (state) => ({
+import { setCurrentlySelectedJob } from '../actions'
 
+
+const mapStateToProps = (state) => ({
+  userInfo: state.userInfo,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  selectJob: (job) => dispatch(setCurrentlySelectedJob(job))
 });
 
 class Search extends Component {
@@ -24,7 +27,8 @@ class Search extends Component {
   }
 
   onSubmit = () => {
-    console.log('here')
+    let jobObj = this.props.userInfo.userInfo.jobs.find((job) => { return job.job_number === parseInt(this.state.searchQuery) })
+    this.props.selectJob(jobObj)
   }
 
   render() {
@@ -38,7 +42,7 @@ class Search extends Component {
         ></input>
         <i 
           className="search link icon"
-          onClick={this.onSubmit}
+          onClick={() => this.onSubmit()}
         ></i>
       </div>
     )
