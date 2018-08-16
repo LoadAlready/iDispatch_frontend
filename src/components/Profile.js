@@ -15,7 +15,7 @@ const Profile = (props) => {
       <h2>{props.userInfo.userInfo.firstname} {props.userInfo.userInfo.lastname}</h2>
         <EmployeeStats />
       <h4>Previous Jobs</h4>
-        <JobList />
+      <JobList jobs={props.userInfo.userInfo.jobs}/>
     </div>
   )
 }
