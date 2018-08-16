@@ -45,12 +45,13 @@ class AdditionalInfo extends Component {
         break;
 
         case "material":
+        
           return (
             <fragment>
               <h1>Material PO Details</h1>
               <ul>
                 <li><strong>Material ID: </strong>{this.props.currentDetail.currentDetail.id}</li>
-                <li><strong>Supplier ID: </strong>{this.supplierInfo}</li>
+                <div id="supplierContainer"></div>
               </ul>
             </fragment>
           )

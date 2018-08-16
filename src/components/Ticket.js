@@ -8,6 +8,7 @@ class Ticket extends Component {
 
     this.state = {
       clientName: "",
+      clientID:"",
       requestedBy: "",
       jobNumber: "",
       month: "",
@@ -27,11 +28,44 @@ class Ticket extends Component {
   
   handleSubmit = (event) => {
     event.preventDefault()
-    let URL = 'http://localhost3000/jobs/';
+    let jobBody = {
+      job: {
+        client_id: this.state.clientID,
+        job_number: this.state.jobNumber,
+        refrence: this.state.requestedBy,
+        schedule_date_month: this.state.month,
+        schedule_date_day: this.state.day,
+        schedule_date_year: this.state.year,
+        schedule_time: this.state.timeIn,
+        time_arrived: this.state.timeIn,
+        time_completed: this.state.timeOut,
+        job_notes: this.state.jobNotes,
+        description: this.state.jobDescription
+      }
+    };
+    let URL = 'http://localhost:3000/jobs';
     let postConfig = {
       method: 'post',
+      headers: {
+        "Content-Type": "application / json"
+      },
+      body: JSON.stringify({
+        job: {
+          client_id: this.state.clientID,
+          job_number: this.state.jobNumber,
+          refrence: this.state.requestedBy,
+          schedule_date_month: this.state.month,
+          schedule_date_day: this.state.day,
+          schedule_date_year: this.state.year,
+          schedule_time: this.state.timeIn,
+          time_arrived: this.state.timeIn,
+          time_completed: this.state.timeOut,
+          job_notes: this.state.jobNotes,
+          description: this.state.jobDescription
+        }
+      })
     }
-    fetch(URL, postConfig)
+    fetch(URL, postConfig).then(console.log)
   }
 
   handleInputChange(event) {
@@ -53,8 +87,16 @@ class Ticket extends Component {
             name="clientName"
             label='Client Name' 
             placeholder='Client Name' 
-            width={4}
+            width={3}
             value={this.state.clientName} 
+          />
+          <Form.Input
+            onChange={this.handleInputChange}
+            name="clientID"
+            label='Client ID'
+            placeholder='Client ID'
+            width={1}
+            value={this.state.clientID}
           />
           <Form.Input
             onChange={this.handleInputChange} 
@@ -148,8 +190,22 @@ class Ticket extends Component {
           />
         </Form.Group>
         <Form.Group>
-          <Form.TextArea label='Job Description' placeholder='Description' width={8} />
-          <Form.TextArea label='Other Nothes' placeholder='Other Nothes' width={8} />
+          <Form.TextArea 
+            onChange={this.handleInputChange}
+            name="jobDescription"
+            label='Job Description' 
+            placeholder='Description' 
+            width={8} 
+            value={this.state.jobDescription} 
+          />
+          <Form.TextArea 
+            onChange={this.handleInputChange}
+            name="jobNotes"
+            label='Other Nothes' 
+            placeholder='Other Nothes' 
+            width={8} 
+            value={this.state.jobNotes} 
+          />
         </Form.Group>
         <Form.Button type="submit" >Submit</Form.Button>
       </Form>
