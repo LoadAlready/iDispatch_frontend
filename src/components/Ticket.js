@@ -14,7 +14,7 @@ class Ticket extends Component {
       month: "",
       day: "",
       year: "",
-      leadTech: "",
+      leadTechID: "",
       timeIn: "",
       timeOut: "",
       secondaryTechs: "",
@@ -28,26 +28,12 @@ class Ticket extends Component {
   
   handleSubmit = (event) => {
     event.preventDefault()
-    let jobBody = {
-      job: {
-        client_id: this.state.clientID,
-        job_number: this.state.jobNumber,
-        refrence: this.state.requestedBy,
-        schedule_date_month: this.state.month,
-        schedule_date_day: this.state.day,
-        schedule_date_year: this.state.year,
-        schedule_time: this.state.timeIn,
-        time_arrived: this.state.timeIn,
-        time_completed: this.state.timeOut,
-        job_notes: this.state.jobNotes,
-        description: this.state.jobDescription
-      }
-    };
+
     let URL = 'http://localhost:3000/jobs';
     let postConfig = {
-      method: 'post',
+      method: 'POST',
       headers: {
-        "Content-Type": "application / json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         job: {
@@ -61,7 +47,11 @@ class Ticket extends Component {
           time_arrived: this.state.timeIn,
           time_completed: this.state.timeOut,
           job_notes: this.state.jobNotes,
-          description: this.state.jobDescription
+          description: this.state.jobDescription,
+          leadTechID: this.state.leadTechID,
+          secondaryTechs: this.state.secondaryTechs,
+          materialPos: this.state.materialPos,
+          suppliers: this.state.suppliers
         }
       })
     }
@@ -140,9 +130,9 @@ class Ticket extends Component {
           />
           <Form.Input
             onChange={this.handleInputChange} 
-            name="leadTech"
-            label='Lead Technician' 
-            placeholder='Lead Technician' 
+            name="leadTechID"
+            label='Lead Technician ID' 
+            placeholder='Lead Technician ID' 
             width={4}
             value={this.state.leadTech} 
           />
@@ -167,8 +157,8 @@ class Ticket extends Component {
           <Form.Input
             onChange={this.handleInputChange} 
             name="secondaryTechs"
-            label='Addional Techs' 
-            placeholder='Addional Techs' 
+            label='Addional Techs ID' 
+            placeholder='Addional Techs ID' 
             width={4}
             value={this.state.secondaryTechs} 
           />
