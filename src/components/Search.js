@@ -57,7 +57,7 @@ class Search extends Component {
         this.props.selectJob(jobObj);
       break;
       case 'employeeID':
-
+        
       break;
       case 'clientID':
         this.fetchClientInfo()

@@ -47,7 +47,6 @@ class JobContainer extends Component {
   }
 
   render() {
-    console.log('job container', this.props)
     return (
       <fragment>
         <Switch>

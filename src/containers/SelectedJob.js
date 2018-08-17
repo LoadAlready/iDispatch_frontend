@@ -19,9 +19,12 @@ class SelectedJob extends Component {
   render() {
     if(this.props.job !== null){
       return (
-        <div className="selected-job">
-          <JobDetails job={this.props.currentlySelectedJob}/>
-          <AdditionalInfo />
+        <div className="column-cointainers">
+          <div className="selected-job">
+            <h2 className="text-center job-detail-title">Job Details</h2>
+            <JobDetails job={this.props.currentlySelectedJob}/>
+            <AdditionalInfo />
+          </div>
         </div>
       )
     } return (

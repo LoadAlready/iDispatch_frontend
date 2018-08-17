@@ -1,9 +1,12 @@
 .App {
   text-align: center;
-  border-color: burlywood; 
-  border-style: solid;
-  border-width: 2px;
-  margin: 15px;
+  padding: 0px;
+  height: 100vh;
+  width: 100vw;
+  background: #FFEEEE;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #DDEFBB, white);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #DDEFBB, white); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .App-logo {
@@ -30,6 +33,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.main-title {
+  font-size: 38px;
+  margin-top: -20px;
+  margin-bottom: 25px;
+}
+
 
 .text-center {
   text-align: center;
@@ -46,9 +55,6 @@
 
 .job-container{
   height: 60rem;
-  border-color: black; 
-  border-style: solid;
-  border-width: 2px;
   margin: 5px;
   display: flex;
   justify-content: center;
@@ -58,26 +64,15 @@
   height: 25rem;
   width: 33rem;
 	overflow: scroll;
-  border-color: blue; 
-  border-style: solid;
-  border-width: 2px;
-  margin: 5px; 
 }
 
 .upcoming-jobs {
   height: 50rem;
   width: 33rem;
 	overflow: scroll;
-  border-color: orange; 
-  border-style: solid;
-  border-width: 2px;
-  margin: 5px;  
 }
 
 .additional-info {
-  border-color: navy; 
-  border-style: solid;
-  border-width: 2px;
   text-align: left;
   margin: 5px;
   overflow: scroll;
@@ -101,24 +96,72 @@
 }
 
 .job-details {
-  border-color: yellowgreen; 
-  border-style: solid;
-  border-width: 2px;
+  font-size: 17px;
   text-align: left;
   margin: 5px;
   overflow: scroll;
   height: 25rem;
   min-width: 33vw;
+  line-height: 22px;
+}
+.job-details li {
+  padding-bottom: 10px;
 }
 
-.job-detail-buttons {
-  size: small;
+.job-detail-button{
+  outline: none;
+  background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+  background-image: linear-gradient(top, #f4f1ee, #fff);
+  border-radius: 50%;
+  box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+  /* float:left; */
+  height: 30px;
+  margin-left: 15px;
+  position: relative;
+  width: 30px;			
+  -webkit-transition: all .1s linear;
+  transition: all .1s linear;
+}
+
+.job-detail-button:after{
+  color:#e9e6e4;
+  content: "";
+  font-size: 15px;
+  height: 15px;
+  text-decoration: none;
+  text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+  width: 15px;
+}
+
+.tick:after{
+  content: "✔";
+  left:23px;
+  top:16px;
+}
+
+.job-detail-button:hover{
+  background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+  background-image: linear-gradient(top, #fff, #f4f1ee);
+  color:#0088cc;
+}
+
+.tick:hover:after{
+  color:#83d244;
+  text-shadow:0px 0px 6px #83d244;
+}
+
+.job-detail-button:active{
+  background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+  background-image: linear-gradient(top, #efedec, #f7f4f4);
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+}
+
+.job-detail-button:active:after{
+  color:#dbd2d2;
+  text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
 }
 
 .selected-job {
-  border-color: gold; 
-  border-style: solid;
-  border-width: 2px;
   margin: 5px; 
   min-width: 33vw;
 }
@@ -157,19 +200,21 @@
 
 .column-containers {
   padding-top: 15px;
+  /* height: 50rem; */
   background-color: rgba(0, 243, 231, 0);
+}
+.job-detail-title {
+  font-size: 22px;
 }
 
 .menu-dropdown {
   padding-top: 4px;
 }
 
+.ui.secondary.menu {
+  font-size:  16px;
+  background: #FFEEEE;  /* fallback for old browsers */
+  background: -webkit-linear-gradfient(to top, white, #DDEFBB) !important;  /* Chrome 10-25, Safari 5.1-6 */  
+  background: linear-gradient(to top, white, #DDEFBB) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-
-/* .menu {
-  background-color: lightblue;
 }
-
-.ui.secondary.menu.test{
-  background-color: lightblue;
-} */

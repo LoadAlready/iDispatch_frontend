@@ -40,11 +40,9 @@ class JobDetails extends Component {
     let materialArray = [...this.state.fetchedJobInfo.material_pos];
     return materialArray.map( (material) => {
       return <li key={UUID()}><strong>Material PO:</strong> {material.id} <strong>- Description:</strong> {material.description}
-                <span className="job-detail-buttons">
-                  <button
-                    onClick={(event) => this.handleDetailClick(event, material, "material")}>
+                  <button className="job-detail-button tick"
+                    onClick={(event) => this.handleDetailClick(event, material, "material")}> 
                   </button>
-                </span>
             </li>
     })
   }
@@ -55,11 +53,10 @@ class JobDetails extends Component {
     return crewArray.map((crew) => {
       counter ++; 
       return <li key={UUID()}><strong>Technician {counter}:</strong> {crew.firstname} {crew.lastname}              
-                <span className="job-detail-buttons">
                   <button
-                    onClick={(event) => this.handleDetailClick(event, crew, "tech")}>
+                    className="job-detail-button tick"
+                    onClick={(event) => this.handleDetailClick(event, crew, "tech")}> 
                   </button>
-                </span>
               </li>
     })
   }
@@ -78,15 +75,13 @@ class JobDetails extends Component {
     if(this.state.fetchedJobInfo !== null){
       return (
         <div className="job-details">
-          <h2 className="text-center">Job Details</h2>
           <ul>
             <li key={UUID()}><strong>Job ID:</strong> {this.state.fetchedJobInfo.id}</li>
             <li key={UUID()}><strong>Client Name:</strong> {this.state.fetchedJobInfo.client.name} 
-              <span className="job-detail-buttons">
                 <button 
-                  onClick={(event) => this.handleDetailClick(event, this.state.fetchedJobInfo.client, "client")}>
+                  className="job-detail-button tick"
+                  onClick={(event) => this.handleDetailClick(event, this.state.fetchedJobInfo.client, "client")}> 
                </button>
-              </span>
             </li>
             <li key={UUID()}><strong>Client Address:</strong> {this.state.fetchedJobInfo.client.street_address}, {this.state.fetchedJobInfo.client.city}. {this.state.fetchedJobInfo.client.state}</li>
             {this.mapJobCrewItems()}

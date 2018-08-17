@@ -23,7 +23,7 @@ class App extends Component {
       return (
         <fragment>
           <Navbar />
-          <h1>iDispatch</h1>
+          <h1 className="main-title">iDispatch</h1>
           <JobContainer />
         </fragment>
       )} else {
