@@ -39,6 +39,12 @@
   margin-bottom: 25px;
 }
 
+.short-padding-top {
+  padding-top: 5px;
+}
+.short-padding-bottom {
+  padding-top: 5px;
+}
 
 .text-center {
   text-align: center !important;
@@ -203,6 +209,8 @@
 }
 .job-detail-title {
   font-size: 22px;
+  padding-bottom: 3rem;
+  padding-top:1rem;
 }
 
 .menu-dropdown {

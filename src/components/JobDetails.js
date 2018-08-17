@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { List } from 'semantic-ui-react'
 
 import UUID from 'uuid'
 
@@ -39,11 +40,26 @@ class JobDetails extends Component {
   mapMaterialItems = () => {
     let materialArray = [...this.state.fetchedJobInfo.material_pos];
     return materialArray.map( (material) => {
-      return <li key={UUID()}><strong>Material PO:</strong> {material.id} <strong>- Description:</strong> {material.description}
-                  <button className="job-detail-button tick"
-                    onClick={(event) => this.handleDetailClick(event, material, "material")}> 
-                  </button>
-            </li>
+      return (
+        <List.Item className='short-padding-top short-padding-bottom'>
+          <List.Content floated='right' className='jobs-list-right'>
+            <List.Header floated='right'>
+              <button className="job-detail-button tick"
+                onClick={(event) => this.handleDetailClick(event, material, "material")}>
+              </button>
+            </List.Header>
+          </List.Content>
+
+          <List.Content className='jobs-list-left'>
+            <List.Header>
+              Material PO: {material.id}
+            </List.Header>
+            <List.Description>
+              Description:{material.description}
+            </List.Description>
+          </List.Content>
+        </List.Item>
+      )
     })
   }
 
@@ -52,12 +68,24 @@ class JobDetails extends Component {
     let crewArray = [...this.state.fetchedJobInfo.users]
     return crewArray.map((crew) => {
       counter ++; 
-      return <li key={UUID()}><strong>Technician {counter}:</strong> {crew.firstname} {crew.lastname}              
-                  <button
-                    className="job-detail-button tick"
-                    onClick={(event) => this.handleDetailClick(event, crew, "tech")}> 
-                  </button>
-              </li>
+      return (
+        <List.Item>
+          <List.Content floated='right' className='jobs-list-right'>
+            <List.Header floated='right'>
+              <button
+                className="job-detail-button tick"
+                onClick={(event) => this.handleDetailClick(event, crew, "tech")}>
+              </button>
+            </List.Header>
+          </List.Content>
+
+          <List.Content className='jobs-list-left'>
+            <List.Content className='short-padding-top'>
+              <strong>Technician {counter}:</strong> {crew.firstname} {crew.lastname}
+            </List.Content>
+          </List.Content>
+        </List.Item>
+      )
     })
   }
 
@@ -71,25 +99,69 @@ class JobDetails extends Component {
   }
 
 
+
+
   render() {
     if(this.state.fetchedJobInfo !== null){
       return (
         <div className="job-details">
-          <ul>
-            <li key={UUID()}><strong>Job ID:</strong> {this.state.fetchedJobInfo.id}</li>
-            <li key={UUID()}><strong>Client Name:</strong> {this.state.fetchedJobInfo.client.name} 
-                <button 
+          <List divided>
+            <List.Item> 
+              <List.Content floated='right' className='jobs-list-right'>
+                <List.Header floated='right'>
+                  Job Number: {this.state.fetchedJobInfo.job_number}
+                </List.Header>
+              </List.Content>
+
+              <List.Content className='jobs-list-left'>
+                <List.Header>
+                  Job ID:  {this.state.fetchedJobInfo.id}
+                </List.Header>
+              </List.Content>
+            </List.Item>
+
+            <List.Item>
+              <List.Content floated='right' className='jobs-list-right'>
+                <button
                   className="job-detail-button tick"
-                  onClick={(event) => this.handleDetailClick(event, this.state.fetchedJobInfo.client, "client")}> 
-               </button>
-            </li>
-            <li key={UUID()}><strong>Client Address:</strong> {this.state.fetchedJobInfo.client.street_address}, {this.state.fetchedJobInfo.client.city}. {this.state.fetchedJobInfo.client.state}</li>
+                  onClick={(event) => this.handleDetailClick(event, this.state.fetchedJobInfo.client, "client")}>
+                </button>
+              </List.Content>
+              <List.Content className='jobs-list-left'>
+                <List.Content className='short-padding-top'>
+                  <strong>Client Name: </strong> {this.state.fetchedJobInfo.client.name}
+                </List.Content>
+              </List.Content>
+            </List.Item>
+
+            <List.Item>
+              <List.Content className='jobs-list-left short-padding-top short-padding-bottom'>
+                <strong>Client Address:</strong> {this.state.fetchedJobInfo.client.street_address}, {this.state.fetchedJobInfo.client.city}. {this.state.fetchedJobInfo.client.state}
+              </List.Content>
+            </List.Item>
+
             {this.mapJobCrewItems()}
-            <li key={UUID()}><strong>Job Description:</strong> {this.state.fetchedJobInfo.description}</li>
-            <li key={UUID()}><strong>Scheduled to arrive:</strong> CREATE HELP TO CONVERT TIME AND USE IN ALL COMPONENTS</li>
-            <li key={UUID()}><strong>Special Notes:</strong> {this.state.fetchedJobInfo.job_notes}</li>
+
+            <List.Item>
+              <List.Content>
+                <strong className='jobs-list-left short-padding-top short-padding-bottom'>Job Description:</strong> {this.state.fetchedJobInfo.description}
+              </List.Content>
+            </List.Item>
+
+            <List.Item>
+              <List.Content className='jobs-list-left short-padding-top short-padding-bottom'>
+                <strong>Scheduled to arrive:</strong> CREATE HELP TO CONVERT TIME AND USE IN ALL Components
+              </List.Content>
+            </List.Item>
+
+            <List.Item>
+              <List.Content className='jobs-list-left short-padding-top short-padding-bottom'>
+                <strong>Special Notes:</strong> {this.state.fetchedJobInfo.job_notes}
+              </List.Content>
+            </List.Item>
+
             {this.mapMaterialItems()}
-          </ul>
+          </List>
           <div className="center-content">
             <button onClick={ (event) => this.handleCurrentJobClick(event) }>CURRENT JOB</button>
           </div>
