@@ -38,7 +38,7 @@ class Search extends Component {
       this.onSubmit()
     }
   }
-  
+
   setCurrentDetailFromFetch = ( detailObject, detailType) => {
     detailObject.detailType = detailType;
     this.props.setDetail(detailObject);
@@ -57,12 +57,16 @@ class Search extends Component {
         this.props.selectJob(jobObj);
       break;
       case 'employeeID':
-    
 
       break;
       case 'clientID':
         this.fetchClientInfo()
       break;
+
+      case 'clientName':
+        debugger
+      break;
+
     } 
 
   }

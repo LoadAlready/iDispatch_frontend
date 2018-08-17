@@ -15,31 +15,34 @@ const mapDispatchToProps = (dispatch) => ({
 class MenuDropdown extends Component {
   constructor(props){
       super(props)
-
+    this.state = {
+        currentCategoryToDisplay: 'Search For'
+    }
   }
-  onClick = (event) => {
+  onClick = (event, searchCat) => {
     this.props.setSearchCategory(event.target.id)
+      this.setState({ currentCategoryToDisplay: searchCat})
   }
 
   render() {
     return (
         <div className="menu-dropdown">
-            <Dropdown item text='Search For'>
+            <Dropdown item text={this.state.currentCategoryToDisplay}>
                 <Dropdown.Menu>
                     <Dropdown.Item 
-                        onClick={(event) => this.onClick(event)}
+                        onClick={(event) => this.onClick(event, 'Job Number')}
                         id="jobNumber"
                     >Job Number</Dropdown.Item>
                     <Dropdown.Item 
-                        onClick={(event) => this.onClick(event)}
+                        onClick={(event) => this.onClick(event, 'Employee ID')}
                         id="employeeID"
                     >Employee ID</Dropdown.Item>
                     <Dropdown.Item 
-                        onClick={(event) => this.onClick(event)}
+                        onClick={(event) => this.onClick(event, 'Client Name')}
                         id="clientName"
                     >Client Name</Dropdown.Item>
                     <Dropdown.Item
-                        onClick={(event) => this.onClick(event)}
+                        onClick={(event) => this.onClick(event, 'Client ID')}
                         id="clientID"
                     >Client ID</Dropdown.Item>
                 </Dropdown.Menu>
