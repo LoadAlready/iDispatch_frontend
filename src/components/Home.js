@@ -60,7 +60,7 @@ class Home extends Component {
   
   render() {
     if(this.props.userInfo !== null){
-      {this.setInitialCurrentJob()}
+      this.setInitialCurrentJob()
       return (
         <div className="job-container">
           <div className="column-containers">

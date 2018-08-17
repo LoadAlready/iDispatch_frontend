@@ -28,7 +28,7 @@ class MenuDropdown extends Component {
     return (
         <div className="menu-dropdown">
             <Dropdown item text={this.state.currentCategoryToDisplay}>
-                <Dropdown.Menu>
+                <Dropdown.Menu className="menu-dropdown-items">
                     <Dropdown.Item 
                         onClick={(event) => this.onClick(event, 'Job Number')}
                         id="jobNumber"

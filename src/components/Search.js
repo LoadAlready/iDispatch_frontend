@@ -53,7 +53,7 @@ class Search extends Component {
   onSubmit = () => {
     switch (this.props.searchCategory.searchCategory ){
       case 'jobNumber':
-        let jobObj = this.props.userInfo.userInfo.jobs.find((job) => { return job.job_number === parseInt(this.state.searchQuery) });
+        let jobObj = this.props.userInfo.userInfo.jobs.find((job) => { return job.job_number === parseInt(this.state.searchQuery, 0) });
         this.props.selectJob(jobObj);
       break;
       case 'employeeID':
@@ -66,14 +66,15 @@ class Search extends Component {
       case 'clientName':
         debugger
       break;
-
+      default:
+        return <h1>Invalid, Please retry</h1>
     } 
 
   }
 
   render() {
     return (
-      <div className="ui icon input">
+      <div className="ui icon input transparent">
         <input 
           type="text" 
           placeholder="Search..."

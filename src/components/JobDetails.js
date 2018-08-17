@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { List } from 'semantic-ui-react'
+import { List, Button } from 'semantic-ui-react'
 
 import UUID from 'uuid'
 
@@ -41,7 +41,7 @@ class JobDetails extends Component {
     let materialArray = [...this.state.fetchedJobInfo.material_pos];
     return materialArray.map( (material) => {
       return (
-        <List.Item className='short-padding-top short-padding-bottom'>
+        <List.Item className='short-padding-top short-padding-bottom' key={UUID()}>
           <List.Content floated='right' className='jobs-list-right'>
             <List.Header floated='right'>
               <button className="job-detail-button tick"
@@ -69,7 +69,7 @@ class JobDetails extends Component {
     return crewArray.map((crew) => {
       counter ++; 
       return (
-        <List.Item>
+        <List.Item key={UUID()}>
           <List.Content floated='right' className='jobs-list-right'>
             <List.Header floated='right'>
               <button
@@ -105,6 +105,9 @@ class JobDetails extends Component {
     if(this.state.fetchedJobInfo !== null){
       return (
         <div className="job-details">
+          <div className="center-content">
+            <Button fluid onClick={(event) => this.handleCurrentJobClick(event)}>CURRENT JOB</Button>
+          </div>
           <List divided>
             <List.Item> 
               <List.Content floated='right' className='jobs-list-right'>
@@ -162,12 +165,9 @@ class JobDetails extends Component {
 
             {this.mapMaterialItems()}
           </List>
-          <div className="center-content">
-            <button onClick={ (event) => this.handleCurrentJobClick(event) }>CURRENT JOB</button>
-          </div>
         </div>
       )
-    }  {
+    } else {
       this.fetchJobInfo()
         return (
         <h1>Loading</h1>

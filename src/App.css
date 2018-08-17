@@ -38,6 +38,9 @@
   margin-top: -20px;
   margin-bottom: 25px;
 }
+.transparent {
+  background-color: transparent !important;
+}
 
 .short-padding-top {
   padding-top: 5px;
@@ -114,13 +117,13 @@
   padding-bottom: 10px;
 }
 
+
 .job-detail-button{
   outline: none;
   background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
   background-image: linear-gradient(top, #f4f1ee, #fff);
   border-radius: 50%;
   box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
-  /* float:left; */
   height: 30px;
   margin-left: 15px;
   position: relative;
@@ -212,9 +215,28 @@
   padding-bottom: 3rem;
   padding-top:1rem;
 }
+.ticket-container {
+  width: 120rem;
+  margin: auto;
+  padding-top: 4rem;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  padding: 20px 25px 25px 25px; 
+  border-radius: 5px;
+}
+.ticket-container h1 {
+  color: black;
+  padding-bottom: 4rem;
+}
 
 .menu-dropdown {
   padding-top: 4px;
+  
+}
+.menu-dropdown-items {
+  /* background-color: rgb(238, 247, 221) !important; */
+  border-color: #DDEFBB !important;
 }
 
 .ui.secondary.menu {

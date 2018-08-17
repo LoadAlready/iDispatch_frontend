@@ -8,7 +8,6 @@ const mapStateToProps = (state) => ({
 })
 
 class AdditionalInfo extends Component {
-
   renderAddionalInfo = () => {
     if (this.props.currentDetail !== null){
       switch (this.props.currentDetail.currentDetail.detailType) {
@@ -27,7 +26,6 @@ class AdditionalInfo extends Component {
               </ul>
             </fragment>
           ) 
-        break;
 
         case "tech":
           return (
@@ -42,10 +40,8 @@ class AdditionalInfo extends Component {
               </ul>
             </fragment>
           )
-        break;
 
         case "material":
-        
           return (
             <fragment>
               <h1>Material PO Details</h1>
@@ -55,6 +51,9 @@ class AdditionalInfo extends Component {
               </ul>
             </fragment>
           )
+
+        default:
+          return <h1 className="text-center">Invalid, Please retry</h1>
       }
     } return <h1 className="text-center">Additional Info Content</h1>
   }
