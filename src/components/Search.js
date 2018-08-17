@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { setCurrentlySelectedJob } from '../actions'
+import { setCurrentlySelectedJob, setCurrentDetail } from '../actions'
 
 
 const mapStateToProps = (state) => ({
@@ -10,7 +10,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  selectJob: (job) => dispatch(setCurrentlySelectedJob(job))
+  selectJob: (job) => dispatch(setCurrentlySelectedJob(job)),
+  setDetail: (detailObj) => dispatch(setCurrentDetail(detailObj))
 });
 
 class Search extends Component {
@@ -18,29 +19,52 @@ class Search extends Component {
     super(props)
 
     this.state = {
-      searchQuery: ""
+      searchQuery: "",
+      employeeID:"",
+      fetchedJobInfo: {},
+      fetchedClientInfo: {},
     }
   }
+  
+
   onChange = (event) => {
     this.setState({
       searchQuery: event.target.value
     })
   }
-  onSubmit = () => {
-    // commented out code was search before dropdown. was working fine
-    // let jobObj = this.props.userInfo.userInfo.jobs.find((job) => { return job.job_number === parseInt(this.state.searchQuery) })
-    // this.props.selectJob(jobObj)
-    
-    if (this.props.searchCategory.searchCategory === 'jobNumber'){
-      let jobObj = this.props.userInfo.userInfo.jobs.find((job) => { return job.job_number === parseInt(this.state.searchQuery) })
-      this.props.selectJob(jobObj)
-    }
 
-  }
   handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       this.onSubmit()
     }
+  }
+  
+  setCurrentDetailFromFetch = ( detailObject, detailType) => {
+    detailObject.detailType = detailType;
+    this.props.setDetail(detailObject);
+  }
+
+  fetchClientInfo = () => {
+    let clientUrl = 'http://localhost:3000/clients/' + this.state.searchQuery;
+    fetch(clientUrl).then(r => r.json()).then((clientObj) => { this.setCurrentDetailFromFetch(clientObj, 'client')})
+  }
+
+
+  onSubmit = () => {
+    switch (this.props.searchCategory.searchCategory ){
+      case 'jobNumber':
+        let jobObj = this.props.userInfo.userInfo.jobs.find((job) => { return job.job_number === parseInt(this.state.searchQuery) });
+        this.props.selectJob(jobObj);
+      break;
+      case 'employeeID':
+    
+
+      break;
+      case 'clientID':
+        this.fetchClientInfo()
+      break;
+    } 
+
   }
 
   render() {

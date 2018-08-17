@@ -12,7 +12,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Schedule extends Component {
     handleItemClick = (job) => {
-        console.log(job)
         this.props.selectJob(job)
     }
 
