@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { List } from 'semantic-ui-react'
 
 import UUID from 'uuid'
 
@@ -45,25 +46,51 @@ class Schedule extends Component {
         });
         // return our list items with only the 5 most recent upcoming jobs
         return sortedFutureAppointments.slice(0, 20).map((job) => {
+            console.log('j', job)
+
             let counter = 1000;
             let shortenedDate = new Date(job.schedule_date_year, job.schedule_date_month, job.schedule_date_day);
-            return <li  key={UUID()} 
-                        jobid={job.id} 
-                        onClick={this.handleItemClick.bind(null, job)} 
-                        className="padding-bottom" id={counter ++}
-                    ><strong jobid={job.id}>Database id:</strong> {job.id}<br /><strong jobid={job.id}>Job Number:</strong> {job.job_number} <br />{shortenedDate.toDateString()} <br /> <strong jobid={job.id}>Time:{job.schedule_time}</strong>
-                    </li>
+            return (
+                <List.Item key={UUID()}
+                    jobid={job.id}
+                    onClick={this.handleItemClick.bind(null, job)}
+                    className="padding-bottom" id={counter++}
+                >
+                    <List.Content floated='right' className='jobs-list-right'>
+                        <List.Header floated='right'>
+                            <strong jobid={job.id}>Client ID: </strong>{job.client_id}
+                        </List.Header>
+                        <List.Description>
+                            <strong jobid={job.id}>Refrence:</strong>  {job.refrence}
+                        </List.Description>
+                    </List.Content>
+
+                    <List.Icon name='address card outline' size='large' verticalAlign='middle' className='jobs-list-left'/>
+                    
+                    <List.Content>
+                        <List.Header>
+                            <strong jobid={job.id} >Job Number: </strong> {job.job_number}
+                        </List.Header>
+                        <List.Description>
+                            {shortenedDate.toDateString()} <br /> <strong jobid={job.id}>Time: {job.schedule_time}</strong>
+                        </List.Description>
+                    </List.Content>
+
+                </List.Item>
+            )
         })
     }
+
+
 
   render() {
     return (
         <div className="column-containers">
             <h3 className="job-detail-title">Upcoming Jobs</h3>
             <div className="upcoming-jobs">
-                <ul>
+                <List divided>
                     {this.mapUpcomingJobs()}
-                </ul>
+                </List>
             </div>
         </div>
     )
