@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { List } from 'semantic-ui-react'
 
 import uuid from 'uuid'
 
@@ -49,11 +50,11 @@ class PreviousJobsList extends Component {
   render() {
     return (
       <div>
-        <h3 className="job-detail-title">Recent Jobs</h3>
+        <h3 className="job-detail-title">Completed Jobs</h3>
         <div className="previous-jobs">
-            <ul>
+          <List divided>
               {this.mapLastFivePreviousJobs()}
-            </ul>
+          </List>
         </div>
       </div>
     )

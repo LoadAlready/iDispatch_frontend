@@ -1,4 +1,6 @@
 import React from 'react'
+import UUID from 'uuid'
+import { List } from 'semantic-ui-react'
 
 export default (props) => {
 
@@ -9,12 +11,27 @@ export default (props) => {
     String(props.job.schedule_date_day),
     timeArray[0],
     timeArray[1]);
-  var newDate = date.toUTCString().split(' ').slice(0,5).join(' ');
+  var newDate = date.toUTCString().split(' ').slice(0,4).join(' ');
 
   return (
-    <li jobid={props.job.id} onClick={props.handleItemClick.bind(null, props)} className="padding-bottom">
-      <strong>Job Number:</strong> {props.job.job_number} <br /> {newDate} <br /> {props.job.id}
-      <br />
-    </li>
+    <List.Item key={UUID()}
+      jobid={props.job.id}
+      onClick={props.handleItemClick.bind(null, props)}
+      className="padding-bottom"
+    >
+      <List.Content floated='right' className='jobs-list-right'>
+        <List.Header>
+            <strong>Date: </strong>{newDate}
+        </List.Header>
+      </List.Content>
+
+      <List.Icon name='check square outline' size='large' verticalAlign='middle' className='jobs-list-left' />
+
+      <List.Content>
+        <List.Header>
+          <strong>Job Number:</strong> {props.job.job_number}
+        </List.Header>
+      </List.Content>
+    </List.Item>
   )
 }

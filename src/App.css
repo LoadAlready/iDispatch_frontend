@@ -195,14 +195,6 @@
   border-width: 2px;
   margin: 5px; 
 }
-.job-list {
-  border-color: salmon; 
-  border-style: solid;
-  border-width: 2px;
-  margin: 5px;
-  height: 40rem;
-  overflow-y: scroll;
-}
 
 .column-containers {
   padding-top: 15px;
@@ -220,7 +212,20 @@
 .ui.secondary.menu {
   font-size:  16px;
   background: #FFEEEE;  /* fallback for old browsers */
-  background: -webkit-linear-gradfient(to top, white, #DDEFBB) !important;  /* Chrome 10-25, Safari 5.1-6 */  
-  background: linear-gradient(to top, white, #DDEFBB) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: -webkit-linear-gradfient(to top, white, #DDEFBB) !important;
+  background: linear-gradient(to top, white, #DDEFBB) !important; 
+  
 }
+
+/* 
+Not being used
+
+
+.job-list {
+  border-color: salmon; 
+  border-style: solid;
+  border-width: 2px;
+  margin: 5px;
+  height: 40rem;
+  overflow-y: scroll;
+} */
