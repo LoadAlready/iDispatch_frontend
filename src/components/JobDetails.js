@@ -93,7 +93,6 @@ class JobDetails extends Component {
           <div className="center-content">
             <button onClick={ (event) => this.handleCurrentJobClick(event) }>CURRENT JOB</button>
           </div>
-          
         </div>
       )
     }  {
@@ -101,7 +100,7 @@ class JobDetails extends Component {
         return (
         <h1>Loading</h1>
     )}
-  }
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobDetails)
