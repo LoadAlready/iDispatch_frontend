@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { List } from 'semantic-ui-react'
 
 
 const mapStateToProps = (state) => ({
@@ -17,13 +17,29 @@ class AdditionalInfo extends Component {
             <fragment>
               <h1 className="text-center">Client Details</h1>
               <br />
-              <ul>
-                <li><strong>Client ID: </strong>{this.props.currentDetail.currentDetail.id}</li>
-                <li><strong>Client Address: </strong>{this.props.currentDetail.currentDetail.street_address}, {this.props.currentDetail.currentDetail.city}. {this.props.currentDetail.currentDetail.state}</li>
-                <li><strong>Client Email: </strong>{this.props.currentDetail.currentDetail.email}</li>
-                <li><strong>Client Phone: </strong>{this.props.currentDetail.currentDetail.phone}</li>
-                <li><strong>Client Point of Contact: </strong>{this.props.currentDetail.currentDetail.refrence}</li>
-              </ul>
+              <List>
+                <List.Item>
+                  <List.Content>
+                      <strong>Client ID:</strong> {this.props.currentDetail.currentDetail.id}
+                  </List.Content>
+                </List.Item>
+
+                <List.Item>
+                  <List.Content>
+                      <strong>Client Address: </strong>{this.props.currentDetail.currentDetail.street_address}, {this.props.currentDetail.currentDetail.city}. {this.props.currentDetail.currentDetail.state}                </List.Content>
+                </List.Item>
+              
+                <List.Item>
+                  <List.Content>
+                      <strong>Client Phone: </strong>{this.props.currentDetail.currentDetail.phone}             
+                  </List.Content>
+                </List.Item>
+              
+                <List.Item>
+                  <List.Content>
+                    <strong>Client Point of Contact: </strong>{this.props.currentDetail.currentDetail.refrence}                </List.Content>
+                </List.Item>
+              </List>
             </fragment>
           ) 
 
@@ -32,12 +48,31 @@ class AdditionalInfo extends Component {
             <fragment>
               <h1 className="text-center">Technician Details</h1>
               <br />
-              <ul>
-                <li><strong>Name: </strong>{this.props.currentDetail.currentDetail.firstname} {this.props.currentDetail.currentDetail.lastname}</li>
-                <li><strong>Phone: </strong>{this.props.currentDetail.currentDetail.phone}</li>
-                <li><strong>Email: </strong>{this.props.currentDetail.currentDetail.email}</li>
-                <li><strong>Address: </strong>Private</li>
-              </ul>
+              <List>
+                <List.Item>
+                  <List.Content>
+                    <strong>Name: </strong>{this.props.currentDetail.currentDetail.firstname} {this.props.currentDetail.currentDetail.lastname}
+                  </List.Content>
+                </List.Item>
+
+                <List.Item>
+                  <List.Content>
+                    <strong>Phone: </strong>{this.props.currentDetail.currentDetail.phone}
+                  </List.Content>
+                </List.Item>
+
+                <List.Item>
+                  <List.Content>
+                    <strong>Email: </strong>{this.props.currentDetail.currentDetail.email}
+                  </List.Content>
+                </List.Item>
+
+                <List.Item>
+                  <List.Content>
+                    <strong>Address: </strong>Private  
+                  </List.Content>
+                </List.Item>
+              </List>
             </fragment>
           )
 
@@ -45,10 +80,13 @@ class AdditionalInfo extends Component {
           return (
             <fragment>
               <h1>Material PO Details</h1>
-              <ul>
-                <li><strong>Material ID: </strong>{this.props.currentDetail.currentDetail.id}</li>
-                <div id="supplierContainer"></div>
-              </ul>
+              <List>
+                <List.Item>
+                  <List.Content>
+                      <strong>Material ID: </strong>{this.props.currentDetail.currentDetail.id}
+                    </List.Content>
+                </List.Item>
+              </List>
             </fragment>
           )
 
