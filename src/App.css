@@ -62,6 +62,12 @@
   margin: 25px;
 }
 
+.login-form {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
 .job-container{
   height: 60rem;
   margin: 5px;
@@ -98,7 +104,7 @@
 
 .map {
   border-color: green; 
-  border-style: solid;
+  border-style: dotted;
   border-width: 2px;
   margin: 5px; 
   height: 25rem;

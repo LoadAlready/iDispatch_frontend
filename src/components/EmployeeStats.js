@@ -6,6 +6,7 @@ const mapStateToProps = (state) => ({
 })
 
 const EmployeeStats = (props) => {
+    console.log("emp", props.userInfo)
   return (
     <div>
       <table className="ui celled striped padded table">
@@ -13,7 +14,7 @@ const EmployeeStats = (props) => {
             <tr>
             <th>
                 <h3 className="ui center aligned header">
-                Total Jobs Completed
+                    Total Jobs Assigned
                 </h3>
             </th>
             <th>
@@ -28,7 +29,7 @@ const EmployeeStats = (props) => {
             </th>
             </tr>
             <tr>
-                <td>{props.userInfo.userInfo.jobs.length}</td>
+                <td className="text-center">{props.userInfo.userInfo.jobs.length}</td>
                 <td>PROP</td>
                 <td>props</td>
             </tr>

@@ -9,7 +9,7 @@ import ProfileContainer from './ProfileContainer'
 import Ticket from '../components/Ticket'
 
 //remove this after token set in local storage
-const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzQ3NzYxNDQsInN1YiI6MX0.qAbES5M3tjDw1oGXPd_Rtf-4WVxuTgHuMWjiBq_7n28';
+const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzUzODE1MDksInN1YiI6MX0.qTceQAYN3UFa1YRIJ0jZTNIFjGCSpMVPeWRdtFKXnEw';
 
 const GET_CURRENT_USER_URL = 'http://localhost:3000/users/current';
 

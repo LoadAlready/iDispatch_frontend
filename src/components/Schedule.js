@@ -45,7 +45,7 @@ class Schedule extends Component {
             return aDate - bDate
         });
         // return our list items with only the 5 most recent upcoming jobs
-        return sortedFutureAppointments.slice(0, 20).map((job) => {
+        return sortedFutureAppointments.slice(0, 125).map((job) => {
             let counter = 1000;
             let shortenedDate = new Date(job.schedule_date_year, job.schedule_date_month, job.schedule_date_day);
             return (
@@ -78,8 +78,6 @@ class Schedule extends Component {
             )
         })
     }
-
-
 
   render() {
     return (

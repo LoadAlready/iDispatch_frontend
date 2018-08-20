@@ -37,7 +37,8 @@ class AdditionalInfo extends Component {
               
                 <List.Item>
                   <List.Content>
-                    <strong>Client Point of Contact: </strong>{this.props.currentDetail.currentDetail.refrence}                </List.Content>
+                    <strong>Client Point of Contact: </strong>{this.props.currentDetail.currentDetail.refrence}                
+                  </List.Content>
                 </List.Item>
               </List>
             </fragment>
@@ -79,7 +80,7 @@ class AdditionalInfo extends Component {
         case "material":
           return (
             <fragment>
-              <h1>Material PO Details</h1>
+              <h1 className="text-center">Material PO Details</h1>
               <List>
                 <List.Item>
                   <List.Content>
