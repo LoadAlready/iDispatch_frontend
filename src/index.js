@@ -11,6 +11,7 @@ import 'semantic-ui-css/semantic.min.css';
 import store from './store';
 
 
+const API_KEY = `${process.env.REACT_APP_API_KEY}`
 
 ReactDOM.render(
     <Provider store={store}>

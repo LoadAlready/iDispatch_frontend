@@ -78,13 +78,15 @@
 .previous-jobs {
   height: 25rem;
   width: 33rem;
-	overflow-y: scroll;
+  overflow-y: scroll;
+  /* background-color: rgb(255,255,255, 0.6); */
 }
 
 .upcoming-jobs {
   height: 50rem;
   width: 33rem;
-	overflow-y: scroll;
+  overflow-y: scroll;
+  /* background-color: rgb(255,255,255, 0.6); */
 }
 
 .additional-info {
@@ -103,9 +105,6 @@
 }
 
 .map {
-  border-color: green; 
-  border-style: dotted;
-  border-width: 2px;
   margin: 5px; 
   height: 25rem;
 }
@@ -118,6 +117,7 @@
   height: 25rem;
   min-width: 33vw;
   line-height: 22px;
+  /* background-color: rgb(255,255,255, 0.6); */
 }
 .job-details li {
   padding-bottom: 10px;

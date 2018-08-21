@@ -14,7 +14,7 @@ class Ticket extends Component {
 
     this.state = {
       clientName: "",
-      clientID:"",
+      clientID: "",
       requestedBy: "",
       jobNumber: "",
       month: "",
