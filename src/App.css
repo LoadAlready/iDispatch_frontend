@@ -79,14 +79,14 @@
   height: 25rem;
   width: 33rem;
   overflow-y: scroll;
-  /* background-color: rgb(255,255,255, 0.6); */
+  background-color: rgb(255,255,255, 0.6);
 }
 
 .upcoming-jobs {
   height: 50rem;
   width: 33rem;
   overflow-y: scroll;
-  /* background-color: rgb(255,255,255, 0.6); */
+  background-color: rgb(255,255,255, 0.6);
 }
 
 .additional-info {
@@ -117,7 +117,8 @@
   height: 25rem;
   min-width: 33vw;
   line-height: 22px;
-  /* background-color: rgb(255,255,255, 0.6); */
+  overflow-x: scroll;
+  background-color: rgb(255,255,255, 0.6);
 }
 .job-details li {
   padding-bottom: 10px;
@@ -214,7 +215,7 @@
 .column-containers {
   padding-top: 15px;
   /* height: 50rem; */
-  background-color: rgba(0, 243, 231, 0);
+  /* background-color: rgba(0, 243, 231, 0); */
 }
 .job-detail-title {
   font-size: 22px;
@@ -241,7 +242,7 @@
   
 }
 .menu-dropdown-items {
-  /* background-color: rgb(238, 247, 221) !important; */
+  background-color: rgb(238, 247, 221) !important;
   border-color: #DDEFBB !important;
 }
 
@@ -250,7 +251,10 @@
   background: #FFEEEE;  /* fallback for old browsers */
   background: -webkit-linear-gradfient(to top, white, #DDEFBB) !important;
   background: linear-gradient(to top, white, #DDEFBB) !important; 
-  
+}
+
+.additionalTech {
+
 }
 
 /* 

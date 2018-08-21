@@ -121,11 +121,8 @@ class JobDetails extends Component {
       })
     }
 
-    fetch(JOBURL, postConfig)
-      .then(this.setState({ 
-        fetchedJobInfo: null, 
-        editCurrentJobInfo: !this.state.editCurrentJobInfo,
-      }))
+    fetch(JOBURL, postConfig).then((res) => res.json()).then(obj => { this.setState({ fetchedJobInfo: obj }) }).then(() => { this.setState({ editCurrentJobInfo: !this.state.editCurrentJobInfo })})
+
   }
 
   handleDescriptionInputChange = (event) => {
@@ -140,11 +137,11 @@ class JobDetails extends Component {
   }
 
   render() {
-    console.log('job', this.state)
     if(this.state.fetchedJobInfo !== null){
       if(this.state.editCurrentJobInfo === true){
         return (
           <div className="job-details">
+            <br />
             <div className="center-content">
               <Button onClick={(event) => this.handleCurrentJobClick(event)}>RETURN TO CURRENT JOB</Button>
             </div>
