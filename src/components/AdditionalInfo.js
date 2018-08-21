@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { List } from 'semantic-ui-react'
+import { Scrollbars } from 'react-custom-scrollbars';
 
 
 const mapStateToProps = (state) => ({
@@ -14,7 +15,7 @@ class AdditionalInfo extends Component {
 
         case "client":
           return (
-            <fragment>
+            <div className="additional-client">
               <h1 className="text-center">Client Details</h1>
               <br />
               <List>
@@ -41,13 +42,13 @@ class AdditionalInfo extends Component {
                   </List.Content>
                 </List.Item>
               </List>
-            </fragment>
+            </div>
           ) 
 
         case "tech":
           return (
-            <fragment>
-              <h1 className="text-center">Technician Details</h1>
+            <div className="additional-tech">
+              <h1 className="text-center short-padding-top">Technician Details</h1>
               <br />
               <List>
                 <List.Item>
@@ -74,12 +75,13 @@ class AdditionalInfo extends Component {
                   </List.Content>
                 </List.Item>
               </List>
-            </fragment>
+            </div>
           )
 
         case "material":
+        debugger
           return (
-            <fragment>
+            <div className="additional-material">
               <h1 className="text-center">Material PO Details</h1>
               <List>
                 <List.Item>
@@ -88,7 +90,7 @@ class AdditionalInfo extends Component {
                     </List.Content>
                 </List.Item>
               </List>
-            </fragment>
+            </div>
           )
 
         default:
@@ -102,7 +104,7 @@ class AdditionalInfo extends Component {
   render() {
     
     return (
-      <div className='additional-info'>
+      <div className='additional-info'>     
         {this.renderAddionalInfo()}
       </div>
     )

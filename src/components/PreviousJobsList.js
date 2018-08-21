@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { List } from 'semantic-ui-react'
+import { Scrollbars } from 'react-custom-scrollbars';
 
 import uuid from 'uuid'
 
@@ -52,9 +53,13 @@ class PreviousJobsList extends Component {
       <div>
         <h3 className="job-detail-title">Completed Jobs</h3>
         <div className="previous-jobs">
-          <List divided>
-              {this.mapLastFivePreviousJobs()}
-          </List>
+          <Scrollbars className="scroll">
+            <List divided>
+              <br />
+                {this.mapLastFivePreviousJobs()}
+              <br />
+            </List>
+          </Scrollbars> 
         </div>
       </div>
     )

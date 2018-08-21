@@ -67,7 +67,10 @@ class Home extends Component {
             <PreviousJobsList jobs={this.props.userInfo.userInfo.jobs}/>
             <Map />
           </div>
+          <div>
           <SelectedJob />
+
+          </div>
           <Schedule jobs={this.props.userInfo.userInfo.jobs}/>
         </div>
       )

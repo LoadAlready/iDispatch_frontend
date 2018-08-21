@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { List } from 'semantic-ui-react'
-
+import { Scrollbars } from 'react-custom-scrollbars';
 import UUID from 'uuid'
 
 import { setCurrentlySelectedJob } from '../actions'
@@ -84,9 +84,12 @@ class Schedule extends Component {
         <div className="column-containers">
             <h3 className="job-detail-title">Upcoming Jobs</h3>
             <div className="upcoming-jobs">
+              <Scrollbars className="scroll">
                 <List divided>
+                    <br />
                     {this.mapUpcomingJobs()}
                 </List>
+              </Scrollbars>
             </div>
         </div>
     )

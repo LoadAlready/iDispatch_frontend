@@ -78,23 +78,24 @@
 .previous-jobs {
   height: 25rem;
   width: 33rem;
-  overflow-y: scroll;
   background-color: rgb(255,255,255, 0.6);
 }
 
 .upcoming-jobs {
   height: 50rem;
   width: 33rem;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   background-color: rgb(255,255,255, 0.6);
 }
 
 .additional-info {
+  padding-left: 25px;
   text-align: left;
   margin: 5px;
-  overflow-y: scroll;
+  overflow-y: hidden;
   height: 25rem;
-  min-width: 33vw;
+  width: 33vw;
+  background-color: rgb(255,255,255, 0.6);
 }
 
 .ticket {
@@ -113,11 +114,11 @@
   font-size: 17px;
   text-align: left;
   margin: 5px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   height: 25rem;
   min-width: 33vw;
   line-height: 22px;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   background-color: rgb(255,255,255, 0.6);
 }
 .job-details li {
@@ -186,7 +187,9 @@
 
 .selected-job {
   margin: 5px; 
-  min-width: 33vw;
+  width: 33vw;
+  margin-right: 4rem;
+  margin-left: 3rem;
 }
 
 .center-content {
@@ -253,19 +256,4 @@
   background: linear-gradient(to top, white, #DDEFBB) !important; 
 }
 
-.additionalTech {
 
-}
-
-/* 
-Not being used
-
-
-.job-list {
-  border-color: salmon; 
-  border-style: solid;
-  border-width: 2px;
-  margin: 5px;
-  height: 40rem;
-  overflow-y: scroll;
-} */
