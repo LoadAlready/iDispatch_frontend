@@ -65,6 +65,7 @@ class Home extends Component {
         <div className="job-container">
           <div className="column-containers">
             <PreviousJobsList jobs={this.props.userInfo.userInfo.jobs}/>
+            <br />
             <Map />
           </div>
           <div>

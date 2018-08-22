@@ -18,7 +18,7 @@ const Map = compose(
     googleMapURL: MAP_URL,
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `100%` }} />,
-    mapElement: <div style={{ height: `42%` }} />
+    mapElement: <div style={{ height: `40%` }} />
   }),
   withScriptjs,
   withGoogleMap,

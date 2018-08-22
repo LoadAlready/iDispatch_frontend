@@ -25,6 +25,7 @@ class JobDetails extends Component {
       editCurrentJobInfo: true,
       editedDescription: "",
       editedJob_notes: "",
+      clocked_in: false,
     }
   }
   
@@ -38,6 +39,14 @@ class JobDetails extends Component {
     let JOBURL = `http://localhost:3000/jobs/` + this.props.currentlySelectedJob.id;
 
     fetch(JOBURL).then(r => r.json()).then(data => this.setState({ fetchedJobInfo: data }));
+  }
+
+  renderClockInOrOutButton = () => {
+    if(this.state.clocked_in) {
+      return < Button onClick={(event) => this.handleClockOut(event)}> CLOCK OUT</Button >
+    }else if (!this.state.clocked_in) {
+      return < Button onClick={(event) => this.handleClockIn(event)}> CLOCK IN</Button >
+    }
   }
 
   mapMaterialItems = () => {
@@ -116,6 +125,7 @@ class JobDetails extends Component {
       },
       body: JSON.stringify({
         job: {
+          update: 'jobDetails',
           editedDescription: this.state.editedDescription,
           editedJobNotes: this.state.editedJob_notes
         }
@@ -136,6 +146,54 @@ class JobDetails extends Component {
       editedJob_notes: event.target.value
     })
   }
+  handleClockIn = (event) => {
+    let date = new Date()
+    let time = `${date.getHours()}:${date.getMinutes()}`
+
+    let JOBURL = `http://localhost:3000/jobs/` + this.props.currentlySelectedJob.id;
+    let postConfig = {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        job: {
+          update: 'timeIn',
+          time_arrived: time
+        }
+      })
+    }
+
+    fetch(JOBURL, postConfig)
+
+    this.setState({
+      clocked_in: !this.state.clocked_in
+    })
+  }
+  handleClockOut = (event) => {
+    let date = new Date()
+    let time = `${date.getHours()}:${date.getMinutes()}`
+
+    let JOBURL = `http://localhost:3000/jobs/` + this.props.currentlySelectedJob.id;
+    let postConfig = {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        job: {
+          update: 'timeOut',
+          time_completed: time
+        }
+      })
+    }
+
+    fetch(JOBURL, postConfig)
+
+    this.setState({
+      clocked_in: !this.state.clocked_in
+    })
+  }
 
   render() {
     if(this.state.fetchedJobInfo !== null){
@@ -146,6 +204,7 @@ class JobDetails extends Component {
             <br />
             <div className="center-content">
               <Button onClick={(event) => this.handleCurrentJobClick(event)}>RETURN TO CURRENT JOB</Button>
+              {this.renderClockInOrOutButton()}
             </div>
               <List divided>
                 <List.Item> 
