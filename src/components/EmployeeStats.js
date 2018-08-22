@@ -19,19 +19,25 @@ const EmployeeStats = (props) => {
             </th>
             <th>
                 <h3 className="ui center aligned header">
-                more stats
+                Specialty
                 </h3>
             </th>
             <th>
                 <h3 className="ui center aligned header">
-                more stats
+                Remaining Vacation Days
+                </h3>
+            </th>
+             <th>
+                <h3 className="ui center aligned header">
+                Van Number
                 </h3>
             </th>
             </tr>
             <tr>
                 <td className="text-center">{props.userInfo.userInfo.jobs.length}</td>
-                <td>PROP</td>
-                <td>props</td>
+                <td className="text-center">{props.userInfo.userInfo.specialty}</td>
+                <td className="text-center">{props.userInfo.userInfo.vacation_days}</td>
+                <td className="text-center">{props.userInfo.userInfo.van_number}</td>
             </tr>
         </tbody>
       </table>

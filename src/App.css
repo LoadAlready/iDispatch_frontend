@@ -76,15 +76,16 @@
 }
 
 .previous-jobs {
-  height: 25rem;
+  height: 24.2rem;
   width: 33rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: rgb(255,255,255, 0.6);
 }
 
 .upcoming-jobs {
   height: 50rem;
   width: 33rem;
-  /* overflow-y: scroll; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: rgb(255,255,255, 0.6);
 }
 
@@ -95,6 +96,7 @@
   overflow-y: hidden;
   height: 25rem;
   width: 33vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: rgb(255,255,255, 0.6);
 }
 
@@ -108,19 +110,25 @@
 .map {
   margin: 5px; 
   height: 25rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.map-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 .map-input {
   position: relative;
-  height: 23.1rem;
+  height: 24rem;
   background-color: rgb(255,255,255, 0.6);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .inner-map-input{
   height: 100px;
   padding: 20px;
-
   position: absolute;
   top: 50%;
   left: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   margin: -70px 0 0 -120px;
 }
@@ -129,11 +137,12 @@
   font-size: 17px;
   text-align: left;
   margin: 5px;
+  margin-top: 1.7rem;
   overflow-y: hidden;
-  height: 25rem;
-  min-width: 33vw;
+  height: 24.3rem;
+  width: 33vw;
   line-height: 22px;
-  /* overflow-x: scroll; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: rgb(255,255,255, 0.6);
 }
 .job-details li {
@@ -218,16 +227,16 @@
 }
 
 .profile-container {
-  border-color: firebrick; 
-  border-style: solid;
-  border-width: 2px;
+
   margin: 5px; 
 }
 .profile {
-  border-color: chartreuse; 
-  border-style: solid;
-  border-width: 2px;
+
   margin: 5px; 
+}
+.profile-job-list {
+  height: 50rem;
+  overflow: scroll;
 }
 
 .column-containers {

@@ -22,7 +22,7 @@ class Navbar extends Component {
             <div className="item">
               <Search />
             </div>
-            <a className="ui item active">
+          <a href="/" className="ui item active">
               Logout
             </a>
           </div>

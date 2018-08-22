@@ -22,7 +22,7 @@ class App extends Component {
   
   renderLogin = () => {
     //remove bang for production, bang here to bypass login
-    if(!this.props.loggedIn) {
+    if(this.props.loggedIn) {
       return (
         <fragment>
           <Navbar />

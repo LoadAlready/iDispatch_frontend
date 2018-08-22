@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { List } from 'semantic-ui-react'
-import { Scrollbars } from 'react-custom-scrollbars';
 
 
 const mapStateToProps = (state) => ({
@@ -95,7 +94,7 @@ class AdditionalInfo extends Component {
         default:
           return <h1 className="text-center">Invalid, Please retry</h1>
       }
-    } return <h1 className="text-center">Additional Info Content</h1>
+    } return <h1 className="text-center">Additional Info</h1>
   }
   
 

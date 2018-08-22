@@ -17,7 +17,7 @@ const Map = compose(
   withProps({
     googleMapURL: MAP_URL,
     loadingElement: <div style={{ height: `40%` }} />,
-    containerElement: <div style={{ height: `23rem` }} />,
+    containerElement: <div style={{ height: `24rem` }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
   withScriptjs,
@@ -81,7 +81,7 @@ class QueriedMap extends React.PureComponent {
     searchQuery = this.props.query
   }
   render(){
-    return <Map />
+    return <div className="map-container"><Map /></div>
   }
 
 }

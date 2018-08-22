@@ -15,22 +15,17 @@ class JobList extends Component {
             </th>
             <th>
               <h3 className="ui center aligned header">
-                technician
+                Client ID
             </h3>
             </th>
             <th>
               <h3 className="ui center aligned header">
-                Client
+               Date 
             </h3>
             </th>
             <th>
               <h3 className="ui center aligned header">
-                Material PO
-            </h3>
-            </th>
-            <th>
-              <h3 className="ui center aligned header">
-                Date
+                Refrence
             </h3>
             </th>
           </tr>
