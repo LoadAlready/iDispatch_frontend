@@ -79,7 +79,6 @@ class AdditionalInfo extends Component {
           )
 
         case "material":
-        debugger
           return (
             <div className="additional-material">
               <h1 className="text-center">Material PO Details</h1>

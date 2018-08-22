@@ -216,6 +216,8 @@ class Ticket extends Component {
               value={this.state.jobNotes} 
             />
           </Form.Group>
+          <br />
+          <br />
           <Form.Button fluid type="submit" >Submit</Form.Button>
         </Form>
       </div>

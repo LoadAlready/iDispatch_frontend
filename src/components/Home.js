@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setCurrentlySelectedJob } from '../actions'
-
+import { Icon, Input } from 'semantic-ui-react'
 
 import SelectedJob from '../containers/SelectedJob'
 import PreviousJobsList from '../components/PreviousJobsList'
@@ -18,7 +18,14 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 class Home extends Component {
-
+  constructor(props){
+    super(props)
+    
+    this.state = {
+      mapSearchField: true,
+      mapSearchQuery: "",
+    }
+  }
 
   mapAndSortUpcomingJobs = () => {
     //filter jobs based on current date/time, only show upcoming
@@ -50,11 +57,47 @@ class Home extends Component {
     });
     return sortedFutureAppointments[0]
   }
+  onInputChange = (event) => {
+    this.setState({
+      mapSearchQuery: event.target.value
+    })
+  }
+  handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.onMapInputSubmit()
+    }
+  }
+  onMapInputSubmit = () => {
+    this.setState({
+      mapSearchField: !this.state.mapSearchField
+    })
+  }
+
+  renderMapComponent = () => {
+    if(this.state.mapSearchField){
+      return (
+        <div className="map-input">
+          <div className="inner-map-input">
+            <h3 className="center-content">Supplier Search Query</h3>
+            <Input 
+              onChange={(event) => this.onInputChange(event)}
+              onKeyPress={(event) => this.handleKeyPress(event)}
+              value={this.state.mapSearchQuery}
+              icon={<Icon name='search' inverted circular link />} 
+              placeholder='Search...' 
+            />
+          </div>
+        </div>
+      )
+    } else {
+      return <Map query={this.state.mapSearchQuery}/>
+    }
+  }
 
   setInitialCurrentJob = () => {
     if(this.props.currentlySelectedJob ===  null){
       this.props.currentJobSet(this.mapAndSortUpcomingJobs())
-    }
+    } 
   }
 
   
@@ -66,7 +109,7 @@ class Home extends Component {
           <div className="column-containers">
             <PreviousJobsList jobs={this.props.userInfo.userInfo.jobs}/>
             <br />
-            <Map />
+            {this.renderMapComponent()}
           </div>
           <div>
           <SelectedJob />

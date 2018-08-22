@@ -274,76 +274,75 @@ class JobDetails extends Component {
         <div className="job-details">
           <br />
           <Scrollbars className="scroll">
-
-          <div className="center-content">
-            <Button fluid onClick={(event) => this.handleSaveJobInfoClick(event)}>SAVE JOB INFO</Button>
-          </div>
-          <List divided>
-            <List.Item>
-              <List.Content floated='right' className='jobs-list-right'>
-                <List.Header floated='right'>
-                  Job Number: {this.state.fetchedJobInfo.job_number}
-                </List.Header>
-              </List.Content>
-
-              <List.Content className='jobs-list-left'>
-                <List.Header>
-                  Job ID:  {this.state.fetchedJobInfo.id}
-                </List.Header>
-              </List.Content>
-            </List.Item>
-
-            <List.Item>
-              <List.Content floated='right' className='jobs-list-right'>
-                <button
-                  className="job-detail-button tick"
-                  onClick={(event) => this.handleDetailClick(event, this.state.fetchedJobInfo.client, "client")}>
-                </button>
-              </List.Content>
-              <List.Content className='jobs-list-left'>
-                <List.Content className='short-padding-top'>
-                  <strong>Client Name: </strong> {this.state.fetchedJobInfo.client.name}
+            <div className="center-content">
+              <Button fluid onClick={(event) => this.handleSaveJobInfoClick(event)}>SAVE JOB INFO</Button>
+            </div>
+            <List divided>
+              <List.Item>
+                <List.Content floated='right' className='jobs-list-right'>
+                  <List.Header floated='right'>
+                    Job Number: {this.state.fetchedJobInfo.job_number}
+                  </List.Header>
                 </List.Content>
-              </List.Content>
-            </List.Item>
 
-            <List.Item>
-              <List.Content className='jobs-list-left short-padding-top short-padding-bottom'>
-                <strong>Client Address:</strong> {this.state.fetchedJobInfo.client.street_address}, {this.state.fetchedJobInfo.client.city}. {this.state.fetchedJobInfo.client.state}
-              </List.Content>
-            </List.Item>
+                <List.Content className='jobs-list-left'>
+                  <List.Header>
+                    Job ID:  {this.state.fetchedJobInfo.id}
+                  </List.Header>
+                </List.Content>
+              </List.Item>
 
-            {this.mapJobCrewItems()}
+              <List.Item>
+                <List.Content floated='right' className='jobs-list-right'>
+                  <button
+                    className="job-detail-button tick"
+                    onClick={(event) => this.handleDetailClick(event, this.state.fetchedJobInfo.client, "client")}>
+                  </button>
+                </List.Content>
+                <List.Content className='jobs-list-left'>
+                  <List.Content className='short-padding-top'>
+                    <strong>Client Name: </strong> {this.state.fetchedJobInfo.client.name}
+                  </List.Content>
+                </List.Content>
+              </List.Item>
 
-            <List.Item>
+              <List.Item>
+                <List.Content className='jobs-list-left short-padding-top short-padding-bottom'>
+                  <strong>Client Address:</strong> {this.state.fetchedJobInfo.client.street_address}, {this.state.fetchedJobInfo.client.city}. {this.state.fetchedJobInfo.client.state}
+                </List.Content>
+              </List.Item>
+
+              {this.mapJobCrewItems()}
+
+              <List.Item>
+                <Form>
+                  <Form.Input
+                    onChange={(event) => { this.handleDescriptionInputChange(event) }} 
+                    placeholder={this.state.fetchedJobInfo.description} 
+                    name='description'
+                    value={this.state.editedDescription}
+                  />
+                </Form>
+              </List.Item>
+
+              <List.Item>
+                <List.Content className='jobs-list-left short-padding-top short-padding-bottom'>
+                  <strong>Scheduled to arrive:</strong> CREATE HELP TO CONVERT TIME AND USE IN ALL Components
+                  </List.Content>
+              </List.Item>
+
               <Form>
                 <Form.Input
-                  onChange={(event) => { this.handleDescriptionInputChange(event) }} 
-                  placeholder={this.state.fetchedJobInfo.description} 
-                  name='description'
-                  value={this.state.editedDescription}
+                  onChange={(event) => { this.handleJobNotesInputChange(event) }}
+                  placeholder={this.state.fetchedJobInfo.job_notes}
+                  name='job_notes'
+                  value={this.state.editedJob_notes}
                 />
               </Form>
-            </List.Item>
 
-            <List.Item>
-              <List.Content className='jobs-list-left short-padding-top short-padding-bottom'>
-                <strong>Scheduled to arrive:</strong> CREATE HELP TO CONVERT TIME AND USE IN ALL Components
-                </List.Content>
-            </List.Item>
-
-            <Form>
-              <Form.Input
-                onChange={(event) => { this.handleJobNotesInputChange(event) }}
-                placeholder={this.state.fetchedJobInfo.job_notes}
-                name='job_notes'
-                value={this.state.editedJob_notes}
-              />
-            </Form>
-
-            {this.mapMaterialItems()}
-          </List>
-          <br />
+              {this.mapMaterialItems()}
+            </List>
+            <br />
           </Scrollbars>
         </div>
       )

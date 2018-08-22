@@ -109,12 +109,27 @@
   margin: 5px; 
   height: 25rem;
 }
+.map-input {
+  position: relative;
+  height: 23.1rem;
+  background-color: rgb(255,255,255, 0.6);
+}
+.inner-map-input{
+  height: 100px;
+  padding: 20px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  margin: -70px 0 0 -120px;
+}
 
 .job-details {
   font-size: 17px;
   text-align: left;
   margin: 5px;
-  /* overflow-y: scroll; */
+  overflow-y: hidden;
   height: 25rem;
   min-width: 33vw;
   line-height: 22px;
@@ -232,7 +247,7 @@
   border-width: 1px;
   border-color: black;
   border-style: solid;
-  padding: 20px 25px 25px 25px; 
+  padding: 20px 25px 65px 25px; 
   border-radius: 5px;
 }
 .ticket-container h1 {

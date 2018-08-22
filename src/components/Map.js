@@ -9,16 +9,16 @@ import {
   Marker
 } from 'react-google-maps';
 
-
+let searchQuery ;
 const MAP_URL =
   `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`;
 
 const Map = compose(
   withProps({
     googleMapURL: MAP_URL,
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `100%` }} />,
-    mapElement: <div style={{ height: `40%` }} />
+    loadingElement: <div style={{ height: `40%` }} />,
+    containerElement: <div style={{ height: `23rem` }} />,
+    mapElement: <div style={{ height: `100%` }} />
   }),
   withScriptjs,
   withGoogleMap,
@@ -39,7 +39,7 @@ const Map = compose(
         const request = {
           bounds: bounds,
           location: 'New York City',
-          query: 'Home Depot'
+          query: searchQuery
         };
         service.textSearch(request, (results, status) => {
           if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -55,13 +55,14 @@ const Map = compose(
       onTilesLoaded={props.fetchPlaces}
       ref={props.onMapMounted}
       onBoundsChanged={props.fetchPlaces}
-      defaultZoom={10}
+      mapTypeId= 'satellite'
+      defaultZoom={11}
       defaultCenter={{ lat: 40.7236474, lng: -73.9985707 }}
     >
       {props.places &&
         props.places.map((place, i) => (
           <Marker
-            onClick={() => props.onPlaceClick(place)}
+            // onClick={() => props.onPlaceClick(place)}
             key={i}
             position={{
               lat: place.geometry.location.lat(),
@@ -73,4 +74,16 @@ const Map = compose(
   );
 });
 
-export default Map
+class QueriedMap extends React.PureComponent {
+  constructor(props){
+    super(props)
+
+    searchQuery = this.props.query
+  }
+  render(){
+    return <Map />
+  }
+
+}
+
+export default QueriedMap
