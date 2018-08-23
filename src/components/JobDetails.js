@@ -251,7 +251,7 @@ class JobDetails extends Component {
 
                 <List.Item>
                   <List.Content className='jobs-list-left short-padding-top short-padding-bottom'>
-                    <strong>Scheduled to arrive:</strong> CREATE HELP TO CONVERT TIME AND USE IN ALL Components
+                    <strong>Scheduled to arrive:</strong> {this.state.fetchedJobInfo.schedule_time} AM
                   </List.Content>
                 </List.Item>
 
@@ -327,7 +327,7 @@ class JobDetails extends Component {
 
               <List.Item>
                 <List.Content className='jobs-list-left short-padding-top short-padding-bottom'>
-                  <strong>Scheduled to arrive:</strong> CREATE HELP TO CONVERT TIME AND USE IN ALL Components
+                  <strong>Scheduled to arrive:</strong> {this.state.fetchedJobInfo.schedule_time}
                   </List.Content>
               </List.Item>
 
